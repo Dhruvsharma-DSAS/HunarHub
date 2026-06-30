@@ -1,0 +1,73 @@
+import React from "react";
+import crossplane from "../../../Image/crossplane.png";
+const place = ["Jaipur 302001", "Pune"];
+
+const totalorder = 2;
+
+const Navbar = () => {
+  return (
+    <div className="p-2.5 bg-white shadow-sm">
+      <nav className="flex justify-around">
+        <div className="text-4xl font-bold ml-4 m-2.5">
+          <span className="text-[#333333]">hunar</span>
+          <span className="text-[#C8643C]">hub</span>
+        </div>
+        <div className="flex">
+
+
+          <div className="ml-[30px] p-2">
+            <p className="text-[#8C8479] text-sm pl-1.5">Deliver to</p>
+            <select
+              id="place"
+              name="place"
+              className="bg-transparent font-bold text-black border-none focus:ring-0 cursor-pointer outline-none"
+            >
+              {place.map((item, id) => (
+                <option key={id} value={item}>
+                  {item}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        <div className="flex ml-33.5 w-[600px] h-[40px] m-2.5 border-[1.5px] border-[#29241F] rounded-lg overflow-hidden items-center">
+
+          <input
+            type="text"
+            className="h-full flex-grow px-3 outline-none border-none"
+            placeholder="Search products,services or makers..."
+          />
+
+          <button className="bg-[#c2542e] h-full  text-center w-[100px]">
+            Search
+          </button>
+        </div>
+
+        <div className="flex items-center gap-6 ml-auto mr-4">
+          <div className="cursor-pointer">
+            <p className="text-[#8C8479] text-xs">Account</p>
+            <p className="font-bold">Sign in</p>
+          </div>
+
+          <div className="cursor-pointer">
+            <p className="text-[#8C8479] text-xs">Returns</p>
+            <p className="font-bold">& Orders</p>
+          </div>
+
+          <div className="flex items-center gap-1 cursor-pointer">
+            <div className="relative">
+              <span className="text-2xl">🛒</span>
+              <span className="absolute -top-2 -right-2 bg-[#C8643C] text-white text-[10px] font-bold px-1.5 rounded-full">
+                {totalorder}
+              </span>
+            </div>
+            <span className="font-bold text-lg">Cart</span>
+          </div>
+        </div>
+      </nav>
+    </div>
+  );
+};
+
+export default Navbar;
