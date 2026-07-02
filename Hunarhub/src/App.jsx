@@ -14,11 +14,11 @@ import SignInSignUp from './Component/SignInSignUp'
 
 const Home = () => (
   <>
-    <Firstpage/>
-    <ShopByOccasion/>
-    <Items/>
-    <PopularProduct/>
-    <Sell/>
+    <Firstpage />
+    <ShopByOccasion />
+    <Items />
+    <PopularProduct />
+    <Sell />
 
   </>
 )
@@ -26,15 +26,15 @@ const Home = () => (
 const App = () => {
   return (
     <div className='bg-[#fbf6ef]'>
-      <Movingbar/>
-      <Navbar/>
-      <Category/>
+      <Movingbar />
+      <Navbar />
+      <Category />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/category/:catName" element={<CategoriesBox />} />
         <Route path="/signin" element={<SignInSignUp />} />
       </Routes>
-        <Lastone/>
+      <Lastone />
     </div>
   )
 }

@@ -54,7 +54,7 @@ const Items = () => {
             <div className="flex items-center justify-between">
               <div>
                 <span className="font-bold text-[#29241F]">₹{item.price}</span>
-                {item.DiscountPrice?.trim() && (
+                {item.DiscountPrice && (
                   <span className="text-[#A5A098] text-xs line-through ml-1">
                     ₹{item.DiscountPrice}
                   </span>

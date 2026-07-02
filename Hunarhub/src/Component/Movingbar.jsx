@@ -9,7 +9,7 @@ const Movingbar = () => {
         <a href="" className="text-[#d2cabc]">Help</a>
         <select id="language" name="language">
             <option value="English">English</option>
-            <option value="Hindi">हिंदी</option>
+
         </select>
       </div>
     </div>

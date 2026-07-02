@@ -1,14 +1,22 @@
 import React from 'react'
 import items from '../Data/items'
 
-const SubCategory = ({ category }) => {
-  const filtered = !category || category === "All categories"
-    ? items
-    : category === "Book a Service"
-      ? items.filter((item) => item.Type === "SERVICE")
-      : category === "Handmade Products"
-        ? items.filter((item) => item.Type === "HANDMADE" || item.Type === "TO ORDER")
-        : items.filter((item) => item.category === category);
+const SubCategory = ({ category, subCategory }) => {
+  let filtered = [];
+
+  if (!category || category === "All categories") {
+    filtered = items;
+  } else if (category === "Book a Service") {
+    filtered = items.filter((item) => item.Type === "SERVICE");
+  } else if (category === "Handmade Products") {
+    filtered = items.filter((item) => item.Type === "HANDMADE" || item.Type === "TO ORDER");
+  } else {
+    filtered = items.filter((item) => item.category === category);
+  }
+
+  if (subCategory) {
+    filtered = filtered.filter((item) => item.subCategory === subCategory);
+  }
 
   return (
     <div className="bg-[#FAF6EE] p-6">

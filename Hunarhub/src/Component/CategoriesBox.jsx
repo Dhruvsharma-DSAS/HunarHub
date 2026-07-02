@@ -10,29 +10,33 @@ const CategoriesBox = () => {
 
   const { catName } = useParams();
   const [activeCategory, setActiveCategory] = useState(catName);
+  const [activeSubCategory, setActiveSubCategory] = useState(null);
 
   useEffect(() => {
     if (catName) {
       setActiveCategory(catName);
+      setActiveSubCategory(null);
     }
   }, [catName]);
 
   const categorySection = [
     { type: "All categories", subType: [] },
     { type: "Potter (Kumhar)", subType: ["Diyas & Lamps", "Pots & Matkas", "Idols & Decor", "Clay Kitchenware"] },
-    { type: "Tailor", subType: ["Kurta & Suits", "Alterations", "Blouse & Saree", "Custom Stitching"] },
-    { type: "Cobbler", subType: ["Shoe Repair", "Handmade Footwear", "Polish & Care", "Bag Repair"] },
-    { type: "Artisan", subType: ["Block-Print", "Textiles", "Cane & Basketry", "Brass & Metal", "Handicraft Decor"] },
-    { type: "Small Vendor", subType: ["Handloom & Fabric", "Accessories", "Pooja Essentials", "Home Goods"] },
-    { type: "Handmade Products", subType: ["Pottery", "Textiles", "Jewelry", "Home Decor", "Leather Goods"] },
+    { type: "Tailor", subType: ["Custom Stitching", "Tailoring Service", "Readymade Wear"] },
+    { type: "Cobbler", subType: ["Footwear", "Shoe Repair", "Leather Goods"] },
+    { type: "Artisan", subType: ["Home Decor", "Metal Craft", "Textiles & Weaves", "Wood & Bamboo"] },
+    { type: "Small Vendor", subType: ["Accessories", "Pooja Items", "Textiles & Weaves", "Electrical", "Home Food", "Plumbing", "Clock Repair"] },
+    { type: "Handmade Products", subType: ["Home Decor", "Textiles & Weaves", "Footwear", "Metal Craft", "Wood & Bamboo"] },
     { type: "Book a Service", subType: ["Plumbing", "Electrical", "Clock Repair", "Tailoring Service", "Shoe Repair"] }
   ];
 
   const handleToggle = (type) => {
     if (activeCategory === type) {
       setActiveCategory(null);
+      setActiveSubCategory(null);
     } else {
       setActiveCategory(type);
+      setActiveSubCategory(null);
     }
   };
 
@@ -58,12 +62,17 @@ const CategoriesBox = () => {
               >
                 {item.type}
               </button>
-              {activeCategory === item.type && item.subType.length > 0 && (
+              {activeCategory === item.type && (
                 <div className="flex flex-col gap-1 pl-6 py-2">
                   {item.subType.map((sub, subIdx) => (
                     <button
                       key={subIdx}
-                      className="text-left text-gray-600 hover:text-[#c2542e] py-1"
+                      onClick={() => setActiveSubCategory(sub === activeSubCategory ? null : sub)}
+                      className={`text-left py-1 ${
+                        activeSubCategory === sub
+                          ? "text-[#c2542e] font-bold"
+                          : "text-gray-600 hover:text-[#c2542e]"
+                      }`}
                     >
                       {sub}
                     </button>
@@ -76,7 +85,7 @@ const CategoriesBox = () => {
       </div>
 
       <div className="flex-1">
-        <SubCategory category={activeCategory} />
+        <SubCategory category={activeCategory} subCategory={activeSubCategory} />
       </div>
     </div>
   );
