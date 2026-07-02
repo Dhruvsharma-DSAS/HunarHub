@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import crossplane from "../../../Image/crossplane.png";
+
 const place = ["Jaipur 302001", "Pune"];
 
 const totalorder = 2;
@@ -8,10 +10,10 @@ const Navbar = () => {
   return (
     <div className="p-2.5 bg-white shadow-sm">
       <nav className="flex justify-around">
-        <div className="text-4xl font-bold ml-4 m-2.5">
+        <Link to="/" className="text-4xl font-bold ml-4 m-2.5">
           <span className="text-[#333333]">hunar</span>
           <span className="text-[#C8643C]">hub</span>
-        </div>
+        </Link>
         <div className="flex">
 
 
@@ -45,10 +47,10 @@ const Navbar = () => {
         </div>
 
         <div className="flex items-center gap-6 ml-auto mr-4">
-          <div className="cursor-pointer">
+          <Link to="/signin" className="cursor-pointer">
             <p className="text-[#8C8479] text-xs">Account</p>
             <p className="font-bold">Sign in</p>
-          </div>
+          </Link>
 
           <div className="cursor-pointer">
             <p className="text-[#8C8479] text-xs">Returns</p>

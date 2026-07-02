@@ -4,13 +4,13 @@ import { Link } from 'react-router-dom'
 const Category = () => {
   const links = [
     { label: "All", path: "/" },
-    { label: "Potter (Kumhar)", path: "/potter" },
-    { label: "Tailor", path: "/tailor" },
-    { label: "Cobbler", path: "/cobbler" },
-    { label: "Artisan", path: "/artisan" },
-    { label: "Small Vendor", path: "/small-vendor" },
-    { label: "Handmade Products", path: "/handmade" },
-    { label: "Book a Service", path: "/book-service" },
+    { label: "Potter (Kumhar)", path: "/category/Potter (Kumhar)" },
+    { label: "Tailor", path: "/category/Tailor" },
+    { label: "Cobbler", path: "/category/Cobbler" },
+    { label: "Artisan", path: "/category/Artisan" },
+    { label: "Small Vendor", path: "/category/Small Vendor" },
+    { label: "Handmade Products", path: "/category/Handmade Products" },
+    { label: "Book a Service", path: "/category/Book a Service" },
   ];
 
   return (
@@ -19,9 +19,8 @@ const Category = () => {
         <Link
           key={index}
           to={item.path}
-          cat = {item.label}
           className="text-gray-700 hover:text-[#C8643C] transition-colors duration-200"
-        >
+         >
           {item.label}
         </Link>
       ))}

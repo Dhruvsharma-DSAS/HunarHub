@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import SubCategory from "./SubCategory";
 import { Fragment } from 'react'
 
 
-const CategoriesBox = ({ cat }) => {
-  const [activeCategory, setActiveCategory] = useState(cat);
+const CategoriesBox = () => {
+
+  
+
+  const { catName } = useParams();
+  const [activeCategory, setActiveCategory] = useState(catName);
+
+  useEffect(() => {
+    if (catName) {
+      setActiveCategory(catName);
+    }
+  }, [catName]);
 
   const categorySection = [
     { type: "All categories", subType: [] },
@@ -12,7 +23,9 @@ const CategoriesBox = ({ cat }) => {
     { type: "Tailor", subType: ["Kurta & Suits", "Alterations", "Blouse & Saree", "Custom Stitching"] },
     { type: "Cobbler", subType: ["Shoe Repair", "Handmade Footwear", "Polish & Care", "Bag Repair"] },
     { type: "Artisan", subType: ["Block-Print", "Textiles", "Cane & Basketry", "Brass & Metal", "Handicraft Decor"] },
-    { type: "Small Vendor", subType: ["Handloom & Fabric", "Accessories", "Pooja Essentials", "Home Goods"] }
+    { type: "Small Vendor", subType: ["Handloom & Fabric", "Accessories", "Pooja Essentials", "Home Goods"] },
+    { type: "Handmade Products", subType: ["Pottery", "Textiles", "Jewelry", "Home Decor", "Leather Goods"] },
+    { type: "Book a Service", subType: ["Plumbing", "Electrical", "Clock Repair", "Tailoring Service", "Shoe Repair"] }
   ];
 
   const handleToggle = (type) => {

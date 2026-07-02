@@ -10,6 +10,7 @@ import Sell from './Component/Sell'
 import PopularProduct from './Component/PopularProduct'
 import Lastone from './Component/Lastone'
 import CategoriesBox from './Component/CategoriesBox'
+import SignInSignUp from './Component/SignInSignUp'
 
 const Home = () => (
   <>
@@ -18,7 +19,7 @@ const Home = () => (
     <Items/>
     <PopularProduct/>
     <Sell/>
-    <Lastone/>
+
   </>
 )
 
@@ -30,7 +31,8 @@ const App = () => {
       <Category/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/potter" element={<CategoriesBox />} />
+        <Route path="/category/:catName" element={<CategoriesBox />} />
+        <Route path="/signin" element={<SignInSignUp />} />
       </Routes>
         <Lastone/>
     </div>

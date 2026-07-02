@@ -4,7 +4,11 @@ import items from '../Data/items'
 const SubCategory = ({ category }) => {
   const filtered = !category || category === "All categories"
     ? items
-    : items.filter((item) => item.category === category);
+    : category === "Book a Service"
+      ? items.filter((item) => item.Type === "SERVICE")
+      : category === "Handmade Products"
+        ? items.filter((item) => item.Type === "HANDMADE" || item.Type === "TO ORDER")
+        : items.filter((item) => item.category === category);
 
   return (
     <div className="bg-[#FAF6EE] p-6">
@@ -30,7 +34,7 @@ const SubCategory = ({ category }) => {
               )}
             </div>
 
-            {/* Details */}
+
             <div className="p-4">
               <h3 className="font-semibold text-lg">{item.Product}</h3>
 
@@ -47,7 +51,7 @@ const SubCategory = ({ category }) => {
                 </span>
               </p>
 
-              {/* Price + button */}
+
               <div className="flex items-center justify-between mt-4">
                 <div>
                   <span className="text-xl font-bold">₹{item.price}</span>
