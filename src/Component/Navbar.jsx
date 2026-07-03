@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import crossplane from "../../../Image/crossplane.png";
+import crossplane from "../../Image/crossplane.png";
 
 const place = ["Jaipur 302001", "Pune"];
 
@@ -14,11 +14,10 @@ const Navbar = () => {
           <span className="text-[#333333]">hunar</span>
           <span className="text-[#C8643C]">hub</span>
         </Link>
-        <div className="flex">
-
-
-          <div className="ml-[30px] p-2">
-            <p className="text-[#8C8479] text-sm pl-1.5">Deliver to</p>
+        <div className="flex items-center ml-[10px] p-2">
+          <img src={crossplane} alt="location" className="w-[45px] h-[45px] object-contain" />
+          <div>
+            <p className="text-[#8C8479] text-sm">Deliver to</p>
             <select
               id="place"
               name="place"
