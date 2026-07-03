@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Sell = () => {
   return (
@@ -12,15 +13,15 @@ const Sell = () => {
             Sell your work to the neighbourhood. ₹0 platform fee.
           </h2>
           <div className="flex flex-wrap gap-8 text-[#A5A098]">
-            <span>① List your skills & products</span>
-            <span>② Get orders & service requests</span>
-            <span>③ Keep every rupee</span>
+            <span>1. List your skills & products</span>
+            <span>2. Get orders & service requests</span>
+            <span>3. Keep every rupee</span>
           </div>
         </div>
 
-        <button className="bg-[#C8643C] text-white text-lg font-bold px-8 py-4 rounded-xl whitespace-nowrap hover:bg-[#b3552f]">
+        <Link to="/sell" className="bg-[#C8643C] text-white text-lg font-bold px-8 py-4 rounded-xl whitespace-nowrap hover:bg-[#b3552f] no-underline">
           Start selling →
-        </button>
+        </Link>
       </div>
     </div>
   )

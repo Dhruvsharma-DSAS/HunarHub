@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import crossplane from "../../Image/crossplane.png";
 
+
 const place = ["Jaipur 302001", "Pune"];
 
 const totalorder = 2;
@@ -17,7 +18,7 @@ const Navbar = () => {
         <div className="flex items-center ml-[10px] p-2">
           <img src={crossplane} alt="location" className="w-[45px] h-[45px] object-contain" />
           <div>
-            <p className="text-[#8C8479] text-sm">Deliver to</p>
+            <p className="text-[#8C8479] ml-1.5 text-sm">Deliver to</p>
             <select
               id="place"
               name="place"
@@ -63,7 +64,11 @@ const Navbar = () => {
                 {totalorder}
               </span>
             </div>
-            <span className="font-bold text-lg">Cart</span>
+
+<Link to="/Cart">
+  <span className="font-bold text-lg">Cart</span>
+</Link>
+
           </div>
         </div>
       </nav>

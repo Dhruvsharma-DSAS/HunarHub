@@ -1,6 +1,6 @@
 import React from 'react'
 import items from "../Data/items";
-
+import { Link } from 'react-router';
 const PopularProduct = () => {
   const popular = items.slice(0, 10);
 
@@ -8,7 +8,7 @@ const PopularProduct = () => {
     <div className="max-w-[1400px] mx-auto px-10 py-10">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold text-[#29241F]">Fresh from local makers</h2>
-        <a href="#" className="text-[#C2542E] font-medium">View all →</a>
+        <Link to="/category/All categories" className="text-[#C2542E] font-medium">View all →</Link>
       </div>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
