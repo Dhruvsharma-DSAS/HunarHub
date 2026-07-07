@@ -1,6 +1,6 @@
 import React from 'react'
 import items from "../Data/items";
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 const PopularProduct = () => {
   const popular = items.slice(0, 10);
 
@@ -13,9 +13,10 @@ const PopularProduct = () => {
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {popular.map((item) => (
-          <div
+          <Link
+            to={`/product/${item.Id}`}
             key={item.Id}
-            className="bg-white border border-[#eee] rounded-xl p-3 shadow-sm"
+            className="bg-white border border-[#eee] rounded-xl p-3 shadow-sm block hover:shadow-md transition-shadow cursor-pointer"
           >
             <div className="relative h-44 bg-[#F7F6F5] rounded-lg mb-3 overflow-hidden">
               {item.imglink && (
@@ -66,7 +67,7 @@ const PopularProduct = () => {
                 Add
               </button>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

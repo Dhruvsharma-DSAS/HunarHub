@@ -13,6 +13,7 @@ import CategoriesBox from './Component/CategoriesBox'
 import SignInSignUp from './Component/SignInSignUp'
 import Cart from './Component/Cart'
 import SellingProd from './Component/SellingProd'
+import Productdetail from './Component/Productdetail'
 
 const Home = () => (
   <>
@@ -35,6 +36,7 @@ const MainLayout = () => (
       <Route path="/category/:catName" element={<CategoriesBox />} />
       <Route path="/signin" element={<SignInSignUp />} />
       <Route path="/Cart" element={<Cart />} />
+      <Route path="/product/:id" element={<Productdetail />} />
     </Routes>
     <Lastone />
   </div>

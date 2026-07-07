@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import items from "../Data/items";
 
 const Items = () => {
@@ -10,9 +11,10 @@ const Items = () => {
 
       <div className="flex gap-4 overflow-x-auto pb-4">
         {dealItems.map((item) => (
-          <div
+          <Link
+            to={`/product/${item.Id}`}
             key={item.Id}
-            className="min-w-[220px] bg-white border border-[#eee] rounded-xl p-3 shadow-sm"
+            className="min-w-[220px] bg-white border border-[#eee] rounded-xl p-3 shadow-sm block hover:shadow-md transition-shadow cursor-pointer"
           >
             <div className="relative h-40 bg-[#F7F6F5] rounded-lg mb-3 overflow-hidden">
               {item.imglink && (
@@ -64,7 +66,7 @@ const Items = () => {
                 Add
               </button>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

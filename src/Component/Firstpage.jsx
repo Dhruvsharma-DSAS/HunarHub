@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router";
 
 const imgurl1 =
   "https://i.pinimg.com/736x/ad/f4/13/adf413b3be5d23a38caa285ae62bd388.jpg";
@@ -18,9 +19,9 @@ const Firstpage = () => {
           <p className="text-[#c51c1c] font-bold tracking-wider mb-2">FESTIVE BAZAAR · LIVE</p>
           <h1 className="text-4xl font-bold text-[#f4f8e8] mb-4">Handmade by people<br/>on your street</h1>
           <p className="text-white mb-6">Buy handmade products and book skilled services — from verified potters, tailors, cobblers and artisans near you.</p>
-          <button className="bg-[#c7e955] text-black px-6 py-2 rounded-lg font-bold hover:bg-gray-100">
-            Shop now
-          </button>
+          <Link to="/category/All categories" className="bg-[#9da443] text-black px-6 py-2 rounded-lg font-bold hover:bg-[#d6d2a8]">
+            Check now
+          </Link>
         </div>
       </div>
 

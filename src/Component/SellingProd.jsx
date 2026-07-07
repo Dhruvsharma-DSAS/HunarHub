@@ -1,19 +1,23 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import Lastone from './Lastone'
+
+const categories = ["🏺 Potter", "✂️ Tailor", "👞 Cobbler", "🎨 Artisan", "🛍️ Vendor"];
 
 const SellingProd = () => {
+  const [selected, setSelected] = useState("🏺 Potter");
+
   return (
     <div className="bg-[#F7F3EC]">
 
-      {/* Navbar */}
-      <div className="bg-white flex justify-between items-center px-10 py-5">
+      <div className="bg-[#f4e8dd] border-b-2 border-[#c4baba] flex justify-between items-center px-10 py-5">
         <Link to="/" className="no-underline">
           <h1 className="text-3xl font-bold text-[#29241F]">
-            hunar<span className="text-[#C8843C]">hub</span>{" "}
+            hunar<span className="text-[#9b560b]">hub</span>{" "}
             <span className="text-[#8C8479] text-base font-normal">for makers</span>
           </h1>
         </Link>
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-6"> 
           <Link to="/signin" className="font-bold text-[#29241F] no-underline hover:text-[#C8643C]">Already a maker? Sign in</Link>
           <a href="#maker-signup" className="bg-[#C8643C] text-white font-bold px-6 py-3 rounded-xl no-underline hover:bg-[#b3552f]">
             Start selling
@@ -21,7 +25,6 @@ const SellingProd = () => {
         </div>
       </div>
 
-      {/* Hero */}
       <div className="max-w-[1400px] mx-auto px-10 py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
         <div>
           <span className="bg-[#F0E4D8] text-[#C2542E] font-bold text-sm px-4 py-2 rounded-lg">
@@ -61,7 +64,7 @@ const SellingProd = () => {
 
         <div className="relative">
           <img
-            src="https://loremflickr.com/800/600/pottery,hands"
+            src="https://i.pinimg.com/736x/e9/9e/df/e99edf7ba33b5d9862a2dc2c6c4f3a5f.jpg"
             alt="Potter working"
             className="rounded-3xl w-full"
           />
@@ -79,7 +82,6 @@ const SellingProd = () => {
         </div>
       </div>
 
-      {/* How it works */}
       <div className="max-w-[1400px] mx-auto px-10 py-16 text-center">
         <p className="text-[#C2542E] font-bold tracking-wider">HOW IT WORKS</p>
         <h2 className="text-5xl font-bold text-[#29241F] mt-3 mb-12">
@@ -119,7 +121,6 @@ const SellingProd = () => {
         </div>
       </div>
 
-      {/* Why hunarhub */}
       <div className="max-w-[1400px] mx-auto px-10 py-10">
         <div className="bg-white rounded-3xl p-12 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
@@ -162,14 +163,13 @@ const SellingProd = () => {
           </div>
 
           <img
-            src="https://loremflickr.com/700/700/street,market"
+            src="https://i.pinimg.com/736x/7e/4e/f5/7e4ef5d333217b8f639e236eea0a2c7a.jpg"
             alt="Local street"
             className="rounded-3xl w-full"
           />
         </div>
       </div>
 
-      {/* Testimonials */}
       <div className="max-w-[1400px] mx-auto px-10 py-16 text-center">
         <p className="text-[#C2542E] font-bold tracking-wider">REAL MAKERS, REAL INCOME</p>
         <h2 className="text-5xl font-bold text-[#29241F] mt-3 mb-12">
@@ -221,10 +221,9 @@ const SellingProd = () => {
         </div>
       </div>
 
-      {/* Create maker account form */}
-      <div id="maker-signup" className="max-w-[1400px] mx-auto px-10 pb-20">
-        <div className="bg-[#29241F] rounded-3xl max-w-[800px] mx-auto p-12 text-center">
-          <h2 className="text-white text-5xl font-bold">Create your maker account</h2>
+      <div id="maker-signup" className="max-w-[1400px] mx-auto  px-10 pb-20">
+        <div className="bg-[#29241F] rounded-3xl max-w-[800px] mx-auto p-25 text-center">
+          <h2 className="text-white text-4xl font-bold">Create your maker account</h2>
           <p className="text-[#A5A098] text-lg mt-3 mb-10">
             Takes under two minutes. No fees, ever.
           </p>
@@ -239,17 +238,24 @@ const SellingProd = () => {
 
             <label className="text-white block mb-2">Mobile number</label>
             <div className="flex items-center bg-white rounded-xl px-5 py-4 mb-6">
-              <span className="font-bold mr-3">+91</span>
               <input type="text" placeholder="98765 43210" className="w-full outline-none" />
             </div>
 
             <label className="text-white block mb-3">What do you make or offer?</label>
             <div className="flex flex-wrap gap-3 mb-6">
-              <button className="bg-[#F0E4D8] text-[#C2542E] border border-[#C8643C] px-6 py-3 rounded-xl">🏺 Potter</button>
-              <button className="text-white border border-[#5c564e] px-6 py-3 rounded-xl">✂️ Tailor</button>
-              <button className="text-white border border-[#5c564e] px-6 py-3 rounded-xl">👞 Cobbler</button>
-              <button className="text-white border border-[#5c564e] px-6 py-3 rounded-xl">🎨 Artisan</button>
-              <button className="text-white border border-[#5c564e] px-6 py-3 rounded-xl">🛍️ Vendor</button>
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelected(cat)}
+                  className={`px-6 py-3 rounded-xl border ${
+                    selected === cat
+                      ? "bg-[#F0E4D8] text-[#C2542E] border-[#C8643C]"
+                      : "text-white border-[#5c564e]"
+                  }`}
+                >
+                  {cat}
+                </button>
+              ))}
             </div>
 
             <label className="text-white block mb-2">Area / locality</label>
@@ -269,7 +275,7 @@ const SellingProd = () => {
           </div>
         </div>
       </div>
-
+    <Lastone/>
     </div>
   )
 }

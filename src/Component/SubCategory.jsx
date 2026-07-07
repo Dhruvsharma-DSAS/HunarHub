@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import items from '../Data/items'
 
 const SubCategory = ({ category, subCategory }) => {
@@ -22,7 +23,7 @@ const SubCategory = ({ category, subCategory }) => {
     <div className="bg-[#FAF6EE] p-6">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {filtered.map((item) => (
-          <div key={item.Id} className="bg-white rounded-2xl overflow-hidden shadow-sm">
+          <Link to={`/product/${item.Id}`} key={item.Id} className="bg-white rounded-2xl overflow-hidden shadow-sm block hover:shadow-md transition-shadow cursor-pointer">
             <div className="relative">
               <img
                 src={item.imglink}
@@ -74,7 +75,7 @@ const SubCategory = ({ category, subCategory }) => {
                 </button>
               </div>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
