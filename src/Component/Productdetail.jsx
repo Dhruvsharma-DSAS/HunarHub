@@ -13,9 +13,7 @@ const Productdetail = () => {
   return (
     <div className="max-w-[1400px] mx-auto px-10 py-8">
 
-      <p className="text-[#8C8479] mb-6">
-        Home › {product.category} › {product.Product}
-      </p>
+
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
 

@@ -49,7 +49,7 @@ const occasions = [
 const ShopByOccasion = () => {
   return (
     <div className="max-w-[1400px] mx-auto px-10 py-8">
-      {/* Section header */}
+
       <div className="flex justify-between items-end mb-8">
         <div>
           <p className="text-[#C2542E] text-sm font-semibold tracking-wide uppercase mb-1">
@@ -67,7 +67,6 @@ const ShopByOccasion = () => {
         </Link>
       </div>
 
-      {/* Cards grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
         {occasions.map((item, index) => (
           <Link
@@ -76,12 +75,12 @@ const ShopByOccasion = () => {
             className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             style={{ textDecoration: 'none' }}
           >
-            {/* Card background */}
+  
             <div
               className="h-52 flex flex-col justify-between p-5 relative"
               style={{ background: item.gradient }}
             >
-              {/* Decorative circle */}
+     
               <div
                 className="absolute -top-6 -right-6 w-24 h-24 rounded-full opacity-10"
                 style={{ background: 'white' }}
@@ -91,12 +90,12 @@ const ShopByOccasion = () => {
                 style={{ background: 'white' }}
               />
 
-              {/* Icon */}
+      
               <div className="bg-white/20 backdrop-blur-sm p-3 rounded-xl text-2xl w-fit group-hover:scale-110 group-hover:bg-white/30 transition-all duration-300">
                 {item.icon}
               </div>
 
-              {/* Text */}
+
               <div>
                 <h3 className="font-bold text-lg text-white mb-1 leading-tight">
                   {item.title}
@@ -106,7 +105,7 @@ const ShopByOccasion = () => {
                 </p>
               </div>
 
-              {/* Arrow indicator on hover */}
+
               <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <span className="text-white/80 text-lg">→</span>
               </div>
