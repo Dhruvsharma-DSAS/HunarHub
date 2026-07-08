@@ -1,6 +1,9 @@
 import React from 'react'
 import items from "../Data/items";
 import { Link } from 'react-router-dom';
+
+
+
 const PopularProduct = () => {
   const popular = items.slice(0, 10);
 

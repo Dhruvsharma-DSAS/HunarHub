@@ -40,9 +40,12 @@ const SellingProd = () => {
           </p>
 
           <div className="flex items-center gap-5 mt-8">
-            <button className="bg-[#C8643C] text-white font-bold px-8 py-4 rounded-xl">
+            <a href="#maker-signup">
+              <button  className="bg-[#C8643C] text-white font-bold px-8 py-4 rounded-xl">
               Start selling →
             </button>
+              
+              </a>
             <p className="text-[#8C8479]">Free to join · Approved in 24 hrs</p>
           </div>
 

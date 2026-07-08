@@ -5,7 +5,7 @@ import crossplane from "../../Image/crossplane.png";
 
 const place = ["Jaipur 302001", "Pune"];
 
-const totalorder = 2;
+const totalorder = 0;
 
 const Navbar = () => {
   return (
@@ -52,10 +52,6 @@ const Navbar = () => {
             <p className="font-bold">Sign in</p>
           </Link>
 
-          <div className="cursor-pointer">
-            <p className="text-[#8C8479] text-xs">Returns</p>
-            <p className="font-bold">& Orders</p>
-          </div>
 
           <div className="flex items-center gap-1 cursor-pointer">
             <div className="relative">
@@ -65,9 +61,9 @@ const Navbar = () => {
               </span>
             </div>
 
-<Link to="/Cart">
-  <span className="font-bold text-lg">Cart</span>
-</Link>
+            <Link to="/Cart">
+              <span className="font-bold text-lg">Cart</span>
+            </Link>
 
           </div>
         </div>

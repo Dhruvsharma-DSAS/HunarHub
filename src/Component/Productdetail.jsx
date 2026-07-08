@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import items from '../Data/items'
 
 const Productdetail = () => {
@@ -111,9 +111,14 @@ const Productdetail = () => {
             </button>
           </div>
 
-          <button className="w-full bg-[#29241F] text-white font-bold py-4 rounded-xl mb-8">
-            Go to cart
-          </button>
+          <Link to="/cart">
+            <button className="w-full group flex items-center justify-center gap-2 bg-[#29241F] text-white font-bold py-4 rounded-xl mb-8 hover:bg-black transition-colors">
+              <span>Go to cart</span>
+              <span className="transition-transform duration-300 group-hover:translate-x-2">
+                →
+              </span>
+            </button>
+          </Link>
 
      
           <h3 className="text-xl font-bold text-[#29241F] mb-2">About this product</h3>
