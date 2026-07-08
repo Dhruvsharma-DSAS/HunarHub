@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import crossplane from "../../Image/crossplane.png";
+import SearchBar from "./SearchBar";
 
 
 const place = ["Jaipur 302001", "Pune"];
@@ -33,18 +34,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <div className="flex ml-33.5 w-[600px] h-[40px] m-2.5 border-[1.5px] border-[#29241F] rounded-lg overflow-hidden items-center">
-
-          <input
-            type="text"
-            className="h-full flex-grow px-3 outline-none border-none"
-            placeholder="Search products,services or makers..."
-          />
-
-          <button className="bg-[#c2542e] h-full  text-center w-[100px]">
-            Search
-          </button>
-        </div>
+   <SearchBar/>
 
         <div className="flex items-center gap-6 ml-auto mr-4">
           <Link to="/signin" className="cursor-pointer">
