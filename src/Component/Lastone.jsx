@@ -1,31 +1,41 @@
 import React from 'react'
-
-const features = [
-  { icon: "", title: "Local discovery", desc: "Find makers near you" },
-  { icon: "", title: "Verified makers", desc: "Admin-approved profiles" },
-  { icon: "", title: "Buy or book", desc: "Products & services in one place" },
-  { icon: "", title: "Rated & reviewed", desc: "Real customer feedback" },
-];
-
-const footerLinks = [
-  { heading: "SHOP", links: ["All categories", "Handmade products", "Book a service", "Top-rated makers"] },
-  { heading: "MAKERS", links: ["List your skills", "Maker dashboard", "Service requests", "Earnings"] },
-  { heading: "COMPANY", links: ["About", "Contact", "Help & FAQs", "Privacy"] },
-];
+import { Link } from 'react-router-dom'
 
 const Lastone = () => {
   return (
     <div className="w-full">
       <div className="grid grid-cols-2 md:grid-cols-4 bg-white border-t border-[#eee]">
-        {features.map((item, index) => (
-          <div key={index} className="flex items-start gap-3 p-6 border-r border-[#eee]">
-            <span className="text-3xl">{item.icon}</span>
-            <div>
-              <h3 className="font-bold text-[#29241F]">{item.title}</h3>
-              <p className="text-[#8C8479] text-sm">{item.desc}</p>
-            </div>
+        <div className="flex items-start gap-3 p-6 border-r border-[#eee]">
+          <span className="text-3xl">📍</span>
+          <div>
+            <h3 className="font-bold text-[#29241F]">Local discovery</h3>
+            <p className="text-[#8C8479] text-sm">Find makers near you</p>
           </div>
-        ))}
+        </div>
+
+        <div className="flex items-start gap-3 p-6 border-r border-[#eee]">
+          <span className="text-3xl">✅</span>
+          <div>
+            <h3 className="font-bold text-[#29241F]">Verified makers</h3>
+            <p className="text-[#8C8479] text-sm">Admin-approved profiles</p>
+          </div>
+        </div>
+
+        <div className="flex items-start gap-3 p-6 border-r border-[#eee]">
+          <span className="text-3xl">🛍️</span>
+          <div>
+            <h3 className="font-bold text-[#29241F]">Buy or book</h3>
+            <p className="text-[#8C8479] text-sm">Products & services in one place</p>
+          </div>
+        </div>
+
+        <div className="flex items-start gap-3 p-6 border-r border-[#eee]">
+          <span className="text-3xl">⭐</span>
+          <div>
+            <h3 className="font-bold text-[#29241F]">Rated & reviewed</h3>
+            <p className="text-[#8C8479] text-sm">Real customer feedback</p>
+          </div>
+        </div>
       </div>
 
       <footer className="bg-[#29241F] text-white px-10 py-14">
@@ -39,25 +49,105 @@ const Lastone = () => {
             </p>
           </div>
 
-          {footerLinks.map((col, index) => (
-            <div key={index}>
-              <h4 className="text-[#A5A098] font-bold tracking-wider text-sm mb-5">
-                {col.heading}
-              </h4>
-              <ul className="space-y-4">
-                {col.links.map((link, i) => (
-                  <li key={i}>
-                    <a href="#" className="text-white hover:text-[#C8843C]">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div>
+            <h4 className="text-[#A5A098] font-bold tracking-wider text-sm mb-5">
+              CATEGORIES
+            </h4>
+            <ul className="space-y-4">
+              <li>
+                <Link to="/category/Potter (Kumhar)" className="text-white hover:text-[#C8843C] no-underline">
+                  Potter (Kumhar)
+                </Link>
+              </li>
+              <li>
+                <Link to="/category/Tailor" className="text-white hover:text-[#C8843C] no-underline">
+                  Tailor
+                </Link>
+              </li>
+              <li>
+                <Link to="/category/Cobbler" className="text-white hover:text-[#C8843C] no-underline">
+                  Cobbler
+                </Link>
+              </li>
+              <li>
+                <Link to="/category/Artisan" className="text-white hover:text-[#C8843C] no-underline">
+                  Artisan
+                </Link>
+              </li>
+              <li>
+                <Link to="/category/Small Vendor" className="text-white hover:text-[#C8843C] no-underline">
+                  Small Vendor
+                </Link>
+              </li>
+              <li>
+                <Link to="/category/Handmade Products" className="text-white hover:text-[#C8843C] no-underline">
+                  Handmade Products
+                </Link>
+              </li>
+              <li>
+                <Link to="/category/Book a Service" className="text-white hover:text-[#C8843C] no-underline">
+                  Book a Service
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-[#A5A098] font-bold tracking-wider text-sm mb-5">
+              MAKERS
+            </h4>
+            <ul className="space-y-4">
+              <li>
+                <Link to="/sell" className="text-white hover:text-[#C8843C] no-underline">
+                  List your skills
+                </Link>
+              </li>
+              <li>
+                <Link to="/sell" className="text-white hover:text-[#C8843C] no-underline">
+                  Maker dashboard
+                </Link>
+              </li>
+              <li>
+                <Link to="/sell" className="text-white hover:text-[#C8843C] no-underline">
+                  Service requests
+                </Link>
+              </li>
+              <li>
+                <Link to="/sell" className="text-white hover:text-[#C8843C] no-underline">
+                  Earnings
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-[#A5A098] font-bold tracking-wider text-sm mb-5">
+              COMPANY
+            </h4>
+            <ul className="space-y-4">
+              <li>
+                <Link to="/about"  className="text-white hover:text-[#C8843C] no-underline">
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/" className="text-white hover:text-[#C8843C] no-underline">
+                  Contact Us
+                </Link>
+              </li>
+              <li>
+                <Link to="/" className="text-white hover:text-[#C8843C] no-underline">
+                  Help & FAQs
+                </Link>
+              </li>
+              <li>
+                <Link to="/" className="text-white hover:text-[#C8843C] no-underline">
+                  Privacy Policy
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
-
-
       </footer>
     </div>
   )

@@ -10,7 +10,6 @@ const SearchBar = () => {
     item.Maker.toLowerCase().includes(query.toLowerCase()) ||
     item.category.toLowerCase().includes(query.toLowerCase())
   );
-
   let dropdown;
 
   if (query === "") {
@@ -38,7 +37,7 @@ const SearchBar = () => {
             </div>
             <div className="flex-1">
               <p className="font-bold text-sm text-[#29241F]">{item.Product}</p>
-              <p className="text-xs text-[#8C8479]">{item.Maker} · {item.Distance}</p>
+              <p className="text-xs text-[#8C8479]">{item.Maker}  {item.Distance}</p>
             </div>
             <p className="font-bold text-[#29241F]">₹{item.price}</p>
           </Link>

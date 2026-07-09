@@ -14,6 +14,9 @@ import SignInSignUp from './Component/SignInSignUp'
 import Cart from './Component/Cart'
 import SellingProd from './Component/SellingProd'
 import Productdetail from './Component/Productdetail'
+import About from './Component/About'
+
+import OccasionBox from './Component/OccasionBox'
 
 const Home = () => (
   <>
@@ -34,9 +37,12 @@ const MainLayout = () => (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/category/:catName" element={<CategoriesBox />} />
+      <Route path="/occasion" element={<OccasionBox />} />
+      <Route path="/occasion/:occName" element={<OccasionBox />} />
       <Route path="/signin" element={<SignInSignUp />} />
       <Route path="/Cart" element={<Cart />} />
       <Route path="/product/:id" element={<Productdetail />} />
+      <Route path="/about" element={<About />} />
     </Routes>
     <Lastone />
   </div>

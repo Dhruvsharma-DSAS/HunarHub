@@ -79,7 +79,7 @@ const SellingProd = () => {
               <p className="font-bold text-[#29241F]">
                 Ramesh Kumhar earned ₹18,400 last month
               </p>
-              <p className="text-[#8C8479] text-sm">Potter · Sanganer, Jaipur</p>
+              <p className="text-[#8C8479] text-sm">Potter · Sanganer</p>
             </div>
           </div>
         </div>

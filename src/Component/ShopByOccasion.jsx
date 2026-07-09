@@ -7,42 +7,42 @@ const occasions = [
     desc: "Diyas, lamps & idols",
     icon: "🪔",
     gradient: "linear-gradient(135deg, #C8643C 0%, #8B3A1F 100%)",
-    link: "/category/Potter (Kumhar)",
+    link: "/occasion/Diwali Special",
   },
   {
     title: "Pooja & Temple",
     desc: "Brass, kits & idols",
     icon: "🛕",
     gradient: "linear-gradient(135deg, #B8860B 0%, #7A5B0A 100%)",
-    link: "/category/Artisan",
+    link: "/occasion/Pooja & Temple",
   },
   {
     title: "Home & Decor",
     desc: "Baskets, runners, art",
     icon: "🏠",
     gradient: "linear-gradient(135deg, #2E7D5B 0%, #1B4D38 100%)",
-    link: "/category/Artisan",
+    link: "/occasion/Home & Decor",
   },
   {
     title: "Gifts under ₹300",
     desc: "Thoughtful & local",
     icon: "🎁",
     gradient: "linear-gradient(135deg, #A0522D 0%, #6B3720 100%)",
-    link: "/category/Small Vendor",
+    link: "/occasion/Gifts under ₹300",
   },
   {
     title: "Festive Wear",
     desc: "Kurtas, dupattas, juti",
     icon: "👗",
     gradient: "linear-gradient(135deg, #9B2948 0%, #6B1C33 100%)",
-    link: "/category/Tailor",
+    link: "/occasion/Festive Wear",
   },
   {
     title: "Repairs & Fixes",
     desc: "Shoes, clothes, bags",
     icon: "🛠️",
     gradient: "linear-gradient(135deg, #4A5568 0%, #2D3748 100%)",
-    link: "/category/Book a Service",
+    link: "/occasion/Repairs & Fixes",
   },
 ];
 
@@ -91,7 +91,7 @@ const ShopByOccasion = () => {
               />
 
       
-              <div className="bg-white/20 backdrop-blur-sm p-3 rounded-xl text-2xl w-fit group-hover:scale-110 group-hover:bg-white/30 transition-all duration-300">
+              <div className="bg-white/20 backdrop-blur-sm p-3 rounded-xl text-2xl w-fit group-hover:xf group-hover:bg-white/30 transition-all duration-300">
                 {item.icon}
               </div>
 
