@@ -11,35 +11,45 @@ const imgurl3 =
 const Firstpage = () => {
   return (
     <div className="grid grid-cols-12 m-10 gap-4 px-10 py-4 max-w-[1400px] mx-auto h-[550px]">
-      <div
-        className="col-span-8 h-full bg-cover bg-center rounded-2xl p-10 flex flex-col justify-end"
+      <Link 
+        to="/category/All categories"
+        className="col-span-8 h-full bg-cover bg-center rounded-2xl p-10 flex flex-col justify-end hover:scale-[1.01] hover:shadow-xl transition-all duration-300 relative group overflow-hidden block" 
         style={{ backgroundImage: `url(${imgurl1})` }}
       >
-        <div className="  rounded-xl w-fit ">
-          <p className="text-[#c51c1c] font-bold tracking-wider mb-2">FESTIVE BAZAAR · LIVE</p>
-          <h1 className="text-4xl font-bold text-[#f4f8e8] mb-4">Handmade by people<br />on your street</h1>
-          <p className="text-white mb-6">Buy handmade products and book skilled services — from verified potters, tailors, cobblers and artisans near you.</p>
-          <Link to="/category/All categories" className="bg-[#9da443] text-black px-6 py-2 rounded-lg font-bold hover:bg-[#d6d2a8]">
+        <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all duration-300 rounded-2xl"></div>
+        <div className="rounded-xl w-fit relative z-10">
+          <p className="text-red-400 font-bold tracking-widest mb-2 drop-shadow-md text-sm">FESTIVE BAZAAR · LIVE</p>
+          <h1 className="text-5xl font-extrabold text-white mb-4 group-hover:translate-x-2 transition-transform duration-300 drop-shadow-lg leading-tight">Handmade by people<br/>on your street</h1>
+          <p className="text-stone-200 mb-8 max-w-lg text-lg drop-shadow-lg">Buy handmade products and book skilled services — from verified potters, tailors, cobblers and artisans near you.</p>
+          <span className="bg-[#9da443] text-black px-8 py-3 rounded-xl font-bold group-hover:bg-[#d6d2a8] transition-colors inline-block">
             Check now
-          </Link>
+          </span>
         </div>
-      </div>
+      </Link>
 
       <div className="col-span-4 flex flex-col gap-4 h-full">
-        <div
-          className="h-full w-full bg-cover bg-center rounded-2xl p-6 flex flex-col justify-end"
+        <Link
+          to="/category/Potter (Kumhar)"
+          className="h-full w-full bg-cover bg-center rounded-2xl p-6 flex flex-col justify-end hover:scale-[1.02] hover:shadow-lg transition-all duration-300 relative group overflow-hidden"
           style={{ backgroundImage: `url(${imgurl2})` }}
         >
-          <h2 className="text-white font-bold text-xl">Up to 40% off diyas</h2>
-          <p className="text-white text-sm">Potters near you →</p>
-        </div>
-        <div
-          className="h-full w-full bg-cover bg-center rounded-2xl p-6 flex flex-col justify-end"
+          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-300 rounded-2xl"></div>
+          <div className="relative z-10">
+            <h2 className="text-white font-bold text-xl">Up to 40% off diyas</h2>
+            <p className="text-white text-sm group-hover:translate-x-1 transition-transform">Potters near you →</p>
+          </div>
+        </Link>
+        <Link
+          to="/category/Tailor"
+          className="h-full w-full bg-cover bg-center rounded-2xl p-6 flex flex-col justify-end hover:scale-[1.02] hover:shadow-lg transition-all duration-300 relative group overflow-hidden"
           style={{ backgroundImage: `url(${imgurl3})` }}
         >
-          <h2 className="text-white font-bold text-xl">Book a tailor today </h2>
-          <p className="text-white text-sm">Stitching & alterations →</p>
-        </div>
+          <div className="absolute inset-0 bg-black/10 group-hover:bg-black/30 transition-all duration-300 rounded-2xl"></div>
+          <div className="relative z-10">
+            <h2 className="text-white font-bold text-xl">Book a tailor today </h2>
+            <p className="text-white text-sm group-hover:translate-x-1 transition-transform">Stitching & alterations →</p>
+          </div>
+        </Link>
       </div>
     </div>
   );
