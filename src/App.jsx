@@ -15,8 +15,16 @@ import Cart from './Component/Cart'
 import SellingProd from './Component/SellingProd'
 import Productdetail from './Component/Productdetail'
 import About from './Component/About'
+import ContactUs from './Component/ContactUs'
+import SearchPrduct from './Component/SearchPrduct'
+import Dashboard from './Component/Dashboard'
+import Profile from './Component/Profile'
+import Request from './Component/Request'
+import MyOrders from './Component/MyOrders'
+import AdminDashboard from './Component/AdminDashboard'
 
 import OccasionBox from './Component/OccasionBox'
+import ForgetPassword from './Component/ForgetPassword'
 
 const Home = () => (
   <>
@@ -42,7 +50,13 @@ const MainLayout = () => (
       <Route path="/signin" element={<SignInSignUp />} />
       <Route path="/Cart" element={<Cart />} />
       <Route path="/product/:id" element={<Productdetail />} />
+      <Route path="/search/:query" element={<SearchPrduct />} />
       <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<ContactUs />} />
+      <Route path="/profile/:id" element={<Profile />} />
+      <Route path="/request/:id" element={<Request />} />
+      <Route path="/order" element={<MyOrders />} />
+
     </Routes>
     <Lastone />
   </div>
@@ -52,7 +66,10 @@ const App = () => {
   return (
     <Routes>
       <Route path="/sell" element={<SellingProd />} />
+      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/admin" element={<AdminDashboard />} />
       <Route path="/*" element={<MainLayout />} />
+      <Route path='/forgetpassword' element={<ForgetPassword/>}/>
     </Routes>
   )
 }

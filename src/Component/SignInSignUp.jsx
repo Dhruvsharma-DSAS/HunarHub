@@ -130,9 +130,9 @@ const SignInSignUp = () => {
             <div className="flex justify-between">
               <label className="font-semibold text-stone-800">Password</label>
               {isSignIn && (
-                <button className="text-orange-700 text-sm font-medium">
+                <Link to="/forgetpassword" className="text-orange-700 text-sm font-medium">
                   Forgot?
-                </button>
+                </Link>
               )}
             </div>
             <div className="flex items-center mt-2 rounded-xl border border-stone-300 bg-white focus-within:border-orange-700">

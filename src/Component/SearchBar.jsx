@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import items from '../Data/items'
 
 const SearchBar = () => {
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   const results = items.filter((item) =>
     item.Product.toLowerCase().includes(query.toLowerCase()) ||
@@ -47,17 +48,30 @@ const SearchBar = () => {
   }
 
   return (
-    <div className="relative ml-33.5 w-[600px] m-2.5">
+    <div className="relative m-auto w-[600px] m-2.5">
 
       <div className="flex h-[40px] border-[1.5px] border-[#29241F] rounded-lg overflow-hidden items-center bg-white">
         <input
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" && query.trim() !== "") {
+              navigate(`/search/${query.trim()}`);
+              setQuery("");
+            }
+          }}
           className="h-full flex-grow px-3 outline-none border-none"
           placeholder="Search products, services or makers..."
         />
-        <button className="bg-[#c2542e] h-full text-center w-[100px] text-white">
+        <button 
+          onClick={() => {
+            if (query.trim() !== "") {
+              navigate(`/search/${query.trim()}`);
+              setQuery("");
+            }
+          }}
+          className="bg-[#c2542e] h-full text-center w-[100px] text-white">
           Search
         </button>
       </div>

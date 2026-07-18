@@ -21,7 +21,7 @@ const OccasionBox = () => {
     }
   }, [occName]);
 
-  // Filtering logic based on occasion
+
   let filtered = [];
   if (activeOccasion === "Diwali Special") {
     filtered = items.filter(item => item.subCategory === "Diyas & Lamps" || item.subCategory === "Idols & Decor");
@@ -36,13 +36,13 @@ const OccasionBox = () => {
   } else if (activeOccasion === "Repairs & Fixes") {
     filtered = items.filter(item => item.Type === "SERVICE");
   } else {
-    filtered = items; // default all
+    filtered = items;
   }
 
   return (
     <div className="flex p-10 gap-4 bg-[#FAF6EE] min-h-screen">
 
-      {/* Sidebar for occasions */}
+
       <div className="w-[360px] shrink-0 rounded-3xl bg-white shadow-sm p-6 h-fit">
         <div className="text-sm font-semibold tracking-wider text-gray-500 mb-4 uppercase">
           Shop By Occasion
@@ -66,7 +66,7 @@ const OccasionBox = () => {
         </div>
       </div>
 
-      {/* Grid of items */}
+
       <div className="flex-1">
         <div className="bg-[#FAF6EE] p-6">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -113,12 +113,12 @@ const OccasionBox = () => {
                         </span>
                       )}
                     </div>
-                    <button 
+                    <button
                       className="bg-[#29241F] text-white text-sm px-5 py-2 rounded-xl font-medium"
                       onClick={(e) => {
                         e.preventDefault();
                         e.stopPropagation();
-                        // addToCart handled elsewhere if context provided, just a visual button here
+
                       }}
                     >
                       {item.Type === "HANDMADE" ? "Add" : "Request"}
@@ -128,9 +128,9 @@ const OccasionBox = () => {
               </Link>
             ))}
             {filtered.length === 0 && (
-               <div className="col-span-full py-20 text-center text-[#8C8479]">
-                 No products found for this occasion.
-               </div>
+              <div className="col-span-full py-20 text-center text-[#8C8479]">
+                No products found for this occasion.
+              </div>
             )}
           </div>
         </div>

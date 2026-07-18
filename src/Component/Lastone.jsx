@@ -103,7 +103,7 @@ const Lastone = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/sell" className="text-white hover:text-[#C8843C] no-underline">
+                <Link to="/dashboard" className="text-white hover:text-[#C8843C] no-underline">
                   Maker dashboard
                 </Link>
               </li>
@@ -131,19 +131,11 @@ const Lastone = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/" className="text-white hover:text-[#C8843C] no-underline">
+                <Link to="/contact" className="text-white hover:text-[#C8843C] no-underline">
                   Contact Us
                 </Link>
               </li>
               <li>
-                <Link to="/" className="text-white hover:text-[#C8843C] no-underline">
-                  Help & FAQs
-                </Link>
-              </li>
-              <li>
-                <Link to="/" className="text-white hover:text-[#C8843C] no-underline">
-                  Privacy Policy
-                </Link>
               </li>
             </ul>
           </div>

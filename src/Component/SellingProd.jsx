@@ -6,6 +6,97 @@ const categories = ["🏺 Potter", "✂️ Tailor", "👞 Cobbler", "🎨 Artisa
 
 const SellingProd = () => {
   const [selected, setSelected] = useState("🏺 Potter");
+  const [makerName, setMakerName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [locality, setLocality] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = () => {
+    if (makerName === "" || mobile === "" || locality === "") {
+      return;
+    }
+    setSubmitted(true);
+  };
+
+  let makerForm;
+
+  if (submitted) {
+    makerForm = (
+      <div className="bg-white border border-[#EBE3D6] rounded-2xl p-12 text-center max-w-[800px] mx-auto">
+        <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center text-2xl mx-auto">
+          ✓
+        </div>
+        <h1 className="text-2xl font-bold mt-5">Application submitted!</h1>
+        <p className="text-[#5B5346] text-sm mt-2">
+          Your maker profile is under review. You'll be verified within 24 hours.
+        </p>
+        <div className="flex gap-3 justify-center mt-6">
+          <Link to="/" className="bg-[#C2542E] text-white font-bold px-5 py-3 rounded-lg no-underline">
+            Back to home
+          </Link>
+        </div>
+      </div>
+    );
+  } else {
+    makerForm = (
+      <div className="bg-[#29241F] rounded-3xl max-w-[800px] mx-auto p-25 text-center">
+        <h2 className="text-white text-4xl font-bold">Create your maker account</h2>
+        <p className="text-[#A5A098] text-lg mt-3 mb-10">
+          Takes under two minutes. No fees, ever.
+        </p>
+
+        <div className="text-left">
+          <label className="text-white block mb-2">Full name</label>
+          <input
+            type="text"
+            value={makerName}
+            onChange={(e) => setMakerName(e.target.value)}
+            placeholder="e.g. Ramesh Kumhar"
+            className="w-full bg-white rounded-xl px-5 py-4 mb-6"
+          />
+
+          <label className="text-white block mb-2">Mobile number</label>
+          <div className="flex items-center bg-white rounded-xl px-5 py-4 mb-6">
+            <input type="text" value={mobile} onChange={(e) => setMobile(e.target.value)} placeholder="98765 43210" className="w-full outline-none" />
+          </div>
+
+          <label className="text-white block mb-3">What do you make or offer?</label>
+          <div className="flex flex-wrap gap-3 mb-6">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setSelected(cat)}
+                className={`px-6 py-3 rounded-xl border ${
+                  selected === cat
+                    ? "bg-[#F0E4D8] text-[#C2542E] border-[#C8643C]"
+                    : "text-white border-[#5c564e]"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          <label className="text-white block mb-2">Area / locality</label>
+          <input
+            type="text"
+            value={locality}
+            onChange={(e) => setLocality(e.target.value)}
+            placeholder="e.g. Sanganer, Jaipur"
+            className="w-full bg-white rounded-xl px-5 py-4 mb-8"
+          />
+
+          <button onClick={handleSubmit} className="w-full bg-[#C8643C] text-white font-bold text-lg py-4 rounded-xl">
+            Create maker account →
+          </button>
+
+          <p className="text-[#A5A098] text-center text-sm mt-5">
+            By continuing you agree to hunarhub's Maker Terms. Your profile is reviewed and verified within 24 hours.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-[#F7F3EC]">
@@ -225,58 +316,7 @@ const SellingProd = () => {
       </div>
 
       <div id="maker-signup" className="max-w-[1400px] mx-auto  px-10 pb-20">
-        <div className="bg-[#29241F] rounded-3xl max-w-[800px] mx-auto p-25 text-center">
-          <h2 className="text-white text-4xl font-bold">Create your maker account</h2>
-          <p className="text-[#A5A098] text-lg mt-3 mb-10">
-            Takes under two minutes. No fees, ever.
-          </p>
-
-          <div className="text-left">
-            <label className="text-white block mb-2">Full name</label>
-            <input
-              type="text"
-              placeholder="e.g. Ramesh Kumhar"
-              className="w-full bg-white rounded-xl px-5 py-4 mb-6"
-            />
-
-            <label className="text-white block mb-2">Mobile number</label>
-            <div className="flex items-center bg-white rounded-xl px-5 py-4 mb-6">
-              <input type="text" placeholder="98765 43210" className="w-full outline-none" />
-            </div>
-
-            <label className="text-white block mb-3">What do you make or offer?</label>
-            <div className="flex flex-wrap gap-3 mb-6">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  onClick={() => setSelected(cat)}
-                  className={`px-6 py-3 rounded-xl border ${
-                    selected === cat
-                      ? "bg-[#F0E4D8] text-[#C2542E] border-[#C8643C]"
-                      : "text-white border-[#5c564e]"
-                  }`}
-                >
-                  {cat}
-                </button>
-              ))}
-            </div>
-
-            <label className="text-white block mb-2">Area / locality</label>
-            <input
-              type="text"
-              placeholder="e.g. Sanganer, Jaipur"
-              className="w-full bg-white rounded-xl px-5 py-4 mb-8"
-            />
-
-            <button className="w-full bg-[#C8643C] text-white font-bold text-lg py-4 rounded-xl">
-              Create maker account →
-            </button>
-
-            <p className="text-[#A5A098] text-center text-sm mt-5">
-              By continuing you agree to hunarhub's Maker Terms. Your profile is reviewed and verified within 24 hours.
-            </p>
-          </div>
-        </div>
+        {makerForm}
       </div>
     <Lastone/>
     </div>
