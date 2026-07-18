@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { requestList, listingList, orderList, earnBars, paymentList, navList, skillList } from "../Data/dashboardData";
 import { AuthContext } from "./AuthContext";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
@@ -30,9 +30,9 @@ const Dashboard = () => {
     <div className="min-h-screen bg-[#F7F3EC]">
 
       <div className="bg-white border-b border-[#EBE3D6] px-10 py-4 flex items-center gap-4">
-        <h1 className="text-4xl font-bold text-[#333333]">
+        <Link to="/" className="text-4xl font-bold text-[#333333] no-underline">
           hunar<span className="text-[#C8643C]">hub</span>
-        </h1>
+        </Link>
         <span className="text-[#8C8479] font-bold text-sm">Maker studio</span>
         <div className="ml-auto bg-[#C8643C] text-white font-bold w-9 h-9 rounded-full flex items-center justify-center">
           {userInitial}
