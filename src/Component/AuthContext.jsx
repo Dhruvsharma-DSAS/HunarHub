@@ -13,12 +13,17 @@ export const AuthProvider = ({ children }) => {
     return false;
   };
 
+  const register = (email, name) => {
+    setUser({ email, name: name || 'New Maker' });
+    return true;
+  };
+
   const logout = () => {
     setUser(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout }}>
+    <AuthContext.Provider value={{ user, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );

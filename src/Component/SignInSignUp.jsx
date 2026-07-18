@@ -8,8 +8,9 @@ const SignInSignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPreSign, setShowPreSign] = useState(false);
+  const [fullName, setFullName] = useState("");
   
-  const { login } = useContext(AuthContext);
+  const { login, register } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -17,6 +18,15 @@ const SignInSignUp = () => {
       navigate("/");
     } else {
       alert("Invalid credentials. Please use karan123@gmail.com and karan123");
+    }
+  };
+
+  const handleRegister = () => {
+    if (email) {
+      register(email, fullName || "New Maker");
+      navigate("/dashboard", { state: { section: "listings" } });
+    } else {
+      alert("Please enter a valid email.");
     }
   };
 
@@ -119,6 +129,8 @@ const SignInSignUp = () => {
                 type="text"
                 placeholder="Your name"
                 className="w-full mt-2 p-4 rounded-xl border border-stone-300 outline-none focus:border-orange-700"
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
               />
             </div>
           )}
@@ -173,7 +185,7 @@ const SignInSignUp = () => {
           </div>
 
 
-          <button onClick={isSignIn ? handleLogin : undefined} className="w-full bg-orange-700 hover:bg-orange-800 text-white font-semibold text-lg py-4 rounded-xl mt-6">
+          <button onClick={isSignIn ? handleLogin : handleRegister} className="w-full bg-orange-700 hover:bg-orange-800 text-white font-semibold text-lg py-4 rounded-xl mt-6">
             {isSignIn ? "Sign in" : "Create account"}
           </button>
 

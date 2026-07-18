@@ -26,6 +26,10 @@ const Dashboard = () => {
     }
   }, [location.state?.section]);
 
+  const togglePause = (id) => {
+    setListings(listings.map(l => l.id === id ? { ...l, paused: !l.paused } : l));
+  };
+
   return (
     <div className="min-h-screen bg-[#F7F3EC]">
 
@@ -200,10 +204,16 @@ const Dashboard = () => {
                   placeholder="Price e.g. ₹250"
                   className="w-full border border-[#DDD3C2] rounded-lg px-4 py-3 mb-3"
                 />
+                <div className="w-full border-2 border-dashed border-[#DDD3C2] rounded-lg px-4 py-8 mb-4 flex flex-col items-center justify-center bg-gray-50 text-[#8C8479] cursor-pointer hover:bg-gray-100 transition-colors">
+                  
+                  <span className="text-sm font-bold text-stone-700">Click to upload photo</span>
+                  <span className="text-xs mt-1 text-stone-500">PNG, JPG, up to 5MB</span>
+                  <input type="file" className="hidden" />
+                </div>
                 <button
                   onClick={() => {
                     if (newTitle === "" || newPrice === "") return;
-                    setListings([...listings, { id: "l" + (listings.length + 1), name: newTitle, price: newPrice, tag: "Handmade", img: "https://loremflickr.com/300/300/handmade,craft?lock=99" }]);
+                    setListings([...listings, { id: "l" + (listings.length + 1), name: newTitle, price: newPrice, tag: "Handmade", img: "https://loremflickr.com/300/300/handmade,craft?lock=99", paused: false }]);
                     setNewTitle("");
                     setNewPrice("");
                     setShowAddForm(false);
@@ -228,9 +238,18 @@ const Dashboard = () => {
                     <p className="font-bold text-sm">{l.name}</p>
                     <p className="font-bold mt-1">{l.price}</p>
                     <div className="flex justify-between items-center mt-3">
-                      <span className="text-xs font-bold text-emerald-700">● Active</span>
-                      <button className="border border-[#DDD3C2] rounded-md px-3 py-1 text-xs font-bold">
-                        Pause
+                      <span className={`text-xs font-bold ${l.paused ? "text-stone-500" : "text-emerald-700"}`}>
+                        ● {l.paused ? "Paused" : "Active"}
+                      </span>
+                      <button 
+                        onClick={() => togglePause(l.id)}
+                        className={`border rounded-md px-3 py-1 text-xs font-bold transition-colors ${
+                          l.paused 
+                            ? "border-emerald-200 text-emerald-700 bg-emerald-50 hover:bg-emerald-100" 
+                            : "border-[#DDD3C2] text-stone-700 hover:bg-stone-50"
+                        }`}
+                      >
+                        {l.paused ? "Resume" : "Pause"}
                       </button>
                     </div>
                   </div>
