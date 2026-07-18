@@ -1,14 +1,21 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import items from "../Data/items";
 import { CartContext } from "./CartContext";
+import { AuthContext } from "./AuthContext";
 
 const Items = () => {
   const { addToCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const dealItems = items.filter((item) => item.Discount?.trim());
 
   const handleAdd = (e, item) => {
     e.preventDefault();
+    if (!user) {
+      navigate("/signin");
+      return;
+    }
     addToCart(item);
   };
 

@@ -1,11 +1,14 @@
 import React, { useState, useContext } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import items from '../Data/items'
 import { CartContext } from './CartContext'
+import { AuthContext } from './AuthContext'
 
 const Productdetail = () => {
   const { id } = useParams();
   const { addToCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
   const product = items.find((item) => item.Id === id);
@@ -112,6 +115,10 @@ const Productdetail = () => {
             </div>
             <button
               onClick={() => {
+                if (!user) {
+                  navigate("/signin");
+                  return;
+                }
                 for (let i = 0; i < qty; i++) {
                   addToCart(product);
                 }
@@ -125,7 +132,7 @@ const Productdetail = () => {
             </button>
           </div>
 
-          <Link to="/cart">
+          <Link to={user ? "/cart" : "/signin"}>
             <button className="w-full group flex items-center justify-center gap-2 bg-[#29241F] text-white font-bold py-4 rounded-xl mb-8 hover:bg-black transition-colors">
               <span>Go to cart</span>
               <span className="transition-transform duration-300 group-hover:translate-x-2">

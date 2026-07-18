@@ -99,22 +99,26 @@ const Navbar = () => {
               <p className="font-bold">Sign in</p>
             </Link>
           )}
-          <Link to="/order" className="cursor-pointer">
-            <p className="text-[#8C8479] text-xs">Return</p>
-            <p className="font-bold">& Order</p>
-          </Link>
-          <div className="flex items-center gap-1 cursor-pointer">
-            <div className="relative">
-              <span className="text-2xl">🛒</span>
-              <span className="absolute -top-2 -right-2 bg-[#C8643C] text-white text-[10px] font-bold px-1.5 rounded-full">
-                {getTotalItems()}
-              </span>
-            </div>
+          {user && (
+            <>
+              <Link to="/order" className="cursor-pointer">
+                <p className="text-[#8C8479] text-xs">Return</p>
+                <p className="font-bold">& Order</p>
+              </Link>
+              <div className="flex items-center gap-1 cursor-pointer">
+                <div className="relative">
+                  <span className="text-2xl">🛒</span>
+                  <span className="absolute -top-2 -right-2 bg-[#C8643C] text-white text-[10px] font-bold px-1.5 rounded-full">
+                    {getTotalItems()}
+                  </span>
+                </div>
 
-            <Link to="/Cart">
-              <span className="font-bold text-lg">Cart</span>
-            </Link>
-          </div>
+                <Link to="/cart">
+                  <span className="font-bold text-lg">Cart</span>
+                </Link>
+              </div>
+            </>
+          )}
         </div>
       </nav>
     </div>

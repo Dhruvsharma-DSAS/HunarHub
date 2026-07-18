@@ -1,14 +1,21 @@
 import React, { useContext } from 'react'
 import items from "../Data/items";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { CartContext } from "./CartContext";
+import { AuthContext } from "./AuthContext";
 
 const PopularProduct = () => {
   const { addToCart } = useContext(CartContext);
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const popular = items.slice(0, 10);
 
   const handleAdd = (e, item) => {
     e.preventDefault();
+    if (!user) {
+      navigate("/signin");
+      return;
+    }
     addToCart(item);
   };
 

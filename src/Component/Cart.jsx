@@ -33,7 +33,6 @@ const Cart = () => {
       <div className="text-3xl font-bold ml-[70px] mb-7 text-[#333333]">Your Cart</div>
 
       {cartItems.length === 0 ? (
-        // empty cart
         <div className="w-[90%] m-auto bg-white rounded-3xl h-[50vh] grid place-items-center text-center content-center gap-4 border border-dashed border-[#DCD4C2]">
           <div className="m-2 text-3xl">🛒</div>
           <div className="text-3xl">Your cart is empty</div>
@@ -43,24 +42,19 @@ const Cart = () => {
           </Link>
         </div>
       ) : (
-        // filled cart
         <div className="w-[90%] m-auto flex gap-6">
 
-          {/* cart items list */}
           <div className="flex-1 flex flex-col gap-4">
             {cartItems.map((item) => (
               <div key={item.Id} className="bg-white rounded-2xl p-4 flex items-center gap-4 border border-[#EBE3D6]">
-                {/* product image */}
                 <img src={item.imglink} alt={item.Product} className="w-24 h-24 rounded-xl object-cover" />
 
-                {/* product info */}
                 <div className="flex-1">
                   <h3 className="font-bold text-lg text-[#29241F]">{item.Product}</h3>
                   <p className="text-sm text-[#8C8479] mt-1">{item.Maker} · {item.Distance}</p>
                   <p className="text-sm text-[#8C8479]">{item.category}</p>
                 </div>
 
-                {/* quantity controls */}
                 <div className="flex items-center border border-[#DDD3C2] rounded-xl">
                   <button
                     onClick={() => decreaseQty(item.Id)}
@@ -77,7 +71,6 @@ const Cart = () => {
                   </button>
                 </div>
 
-                {/* price */}
                 <div className="text-right w-24">
                   <p className="font-bold text-lg">₹{item.price * item.quantity}</p>
                   {item.quantity > 1 && (
@@ -85,7 +78,6 @@ const Cart = () => {
                   )}
                 </div>
 
-                {/* remove button */}
                 <button
                   onClick={() => removeFromCart(item.Id)}
                   className="text-[#C2542E] font-bold text-sm border border-[#DDD3C2] px-3 py-2 rounded-lg hover:bg-red-50"
@@ -96,7 +88,6 @@ const Cart = () => {
             ))}
           </div>
 
-          {/* order summary */}
           <div className="w-[320px] bg-white rounded-2xl p-6 border border-[#EBE3D6] h-fit">
             <h3 className="font-bold text-xl text-[#29241F] mb-4">Order Summary</h3>
 
