@@ -11,13 +11,13 @@ const imgurl3 =
 const Firstpage = () => {
   return (
     <div className="grid grid-cols-12 m-10 gap-4 px-10 py-4 max-w-[1400px] mx-auto h-[550px]">
-<div 
-        className="col-span-8 h-full bg-cover bg-center rounded-2xl p-10 flex flex-col justify-end" 
+      <div
+        className="col-span-8 h-full bg-cover bg-center rounded-2xl p-10 flex flex-col justify-end"
         style={{ backgroundImage: `url(${imgurl1})` }}
       >
         <div className="  rounded-xl w-fit ">
           <p className="text-[#c51c1c] font-bold tracking-wider mb-2">FESTIVE BAZAAR · LIVE</p>
-          <h1 className="text-4xl font-bold text-[#f4f8e8] mb-4">Handmade by people<br/>on your street</h1>
+          <h1 className="text-4xl font-bold text-[#f4f8e8] mb-4">Handmade by people<br />on your street</h1>
           <p className="text-white mb-6">Buy handmade products and book skilled services — from verified potters, tailors, cobblers and artisans near you.</p>
           <Link to="/category/All categories" className="bg-[#9da443] text-black px-6 py-2 rounded-lg font-bold hover:bg-[#d6d2a8]">
             Check now
