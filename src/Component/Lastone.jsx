@@ -111,12 +111,12 @@ const Lastone = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/sell" className="text-white hover:text-[#C8843C] no-underline">
+                  <Link to="/dashboard" state={{ section: "requests" }} className="text-white hover:text-[#C8843C] no-underline">
                     Service requests
                   </Link>
                 </li>
                 <li>
-                  <Link to="/sell" className="text-white hover:text-[#C8843C] no-underline">
+                  <Link to="/dashboard" state={{ section: "earnings" }} className="text-white hover:text-[#C8843C] no-underline">
                     Earnings
                   </Link>
                 </li>

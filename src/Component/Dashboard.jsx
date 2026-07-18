@@ -1,19 +1,30 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { requestList, listingList, orderList, earnBars, paymentList, navList, skillList } from "../Data/dashboardData";
 import { AuthContext } from "./AuthContext";
+import { useLocation } from "react-router-dom";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const userName = user?.name || "Karan";
   const userInitial = userName.charAt(0).toUpperCase();
 
-  const [section, setSection] = useState("overview");
+  const location = useLocation();
+  const initialSection = location.state?.section || "overview";
+
+  const [section, setSection] = useState(initialSection);
   const [listings, setListings] = useState(listingList);
+  const [requests, setRequests] = useState(requestList);
   const [showAddForm, setShowAddForm] = useState(false);
   const [newTitle, setNewTitle] = useState("");
   const [newPrice, setNewPrice] = useState("");
   const [editingBio, setEditingBio] = useState(false);
   const [bioText, setBioText] = useState("Third-generation potter working the wheel in Sanganer. I make hand-thrown terracotta diyas, matkas and puja items using clay sourced locally and fired the traditional way.");
+
+  useEffect(() => {
+    if (location.state?.section) {
+      setSection(location.state.section);
+    }
+  }, [location.state?.section]);
 
   return (
     <div className="min-h-screen bg-[#F7F3EC]">
@@ -61,7 +72,7 @@ const Dashboard = () => {
               </div>
               <div className="bg-white border border-[#EBE3D6] rounded-2xl p-5">
                 <p className="text-xs text-[#8C8479] font-bold">Pending requests</p>
-                <p className="text-2xl font-bold mt-2">3</p>
+                <p className="text-2xl font-bold mt-2">{requests.length}</p>
                 <p className="text-xs text-[#C2542E] font-bold mt-1">Respond within a day</p>
               </div>
               <div className="bg-white border border-[#EBE3D6] rounded-2xl p-5">
@@ -83,7 +94,10 @@ const Dashboard = () => {
                   View all →
                 </button>
               </div>
-              {requestList.slice(0, 3).map((r) => (
+              {requests.length === 0 && (
+                 <p className="text-[#8C8479] text-sm mt-4">You're all caught up! No pending requests.</p>
+              )}
+              {requests.slice(0, 3).map((r) => (
                 <div key={r.id} className="flex items-center gap-3 py-3 border-t border-[#F1EADD]">
                   <img src={r.img} alt="" className="w-11 h-11 rounded-lg object-cover" />
                   <div className="flex-1">
@@ -91,8 +105,8 @@ const Dashboard = () => {
                     <p className="text-xs text-[#8C8479]">{r.customer} · {r.time}</p>
                   </div>
                   <span className="font-bold text-sm">{r.amount}</span>
-                  <button className="w-8 h-8 rounded-lg border border-[#DDD3C2] bg-white">✕</button>
-                  <button className="w-8 h-8 rounded-lg bg-[#29241F] text-white">✓</button>
+                  <button onClick={() => setRequests(requests.filter(req => req.id !== r.id))} className="w-8 h-8 rounded-lg border border-[#DDD3C2] bg-white hover:bg-gray-50 transition-colors">✕</button>
+                  <button onClick={() => setRequests(requests.filter(req => req.id !== r.id))} className="w-8 h-8 rounded-lg bg-[#29241F] text-white hover:bg-black transition-colors">✓</button>
                 </div>
               ))}
             </div>
@@ -232,7 +246,12 @@ const Dashboard = () => {
             <p className="text-[#8C8479] text-sm mt-1 mb-5">Accept requests you can fulfil, decline the rest.</p>
 
             <div className="flex flex-col gap-3">
-              {requestList.map((r) => (
+              {requests.length === 0 && (
+                <div className="bg-white border border-[#EBE3D6] rounded-2xl p-8 text-center text-[#8C8479]">
+                  No pending service requests at this moment.
+                </div>
+              )}
+              {requests.map((r) => (
                 <div key={r.id} className="bg-white border border-[#EBE3D6] rounded-2xl p-4 flex items-center gap-4">
                   <img src={r.img} alt="" className="w-14 h-14 rounded-xl object-cover" />
                   <div className="flex-1">
@@ -242,10 +261,10 @@ const Dashboard = () => {
                     </p>
                   </div>
                   <span className="font-bold">{r.amount}</span>
-                  <button className="border border-[#DDD3C2] rounded-lg px-4 py-2 text-sm font-bold">
+                  <button onClick={() => setRequests(requests.filter(req => req.id !== r.id))} className="border border-[#DDD3C2] rounded-lg px-4 py-2 text-sm font-bold hover:bg-gray-50 transition-colors">
                     Decline
                   </button>
-                  <button className="bg-[#29241F] text-white rounded-lg px-4 py-2 text-sm font-bold">
+                  <button onClick={() => setRequests(requests.filter(req => req.id !== r.id))} className="bg-[#29241F] text-white rounded-lg px-4 py-2 text-sm font-bold hover:bg-black transition-colors">
                     Accept
                   </button>
                 </div>
