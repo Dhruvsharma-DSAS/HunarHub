@@ -1,11 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import items from "../Data/items";
 import { Link } from 'react-router-dom';
-
-
+import { CartContext } from "./CartContext";
 
 const PopularProduct = () => {
+  const { addToCart } = useContext(CartContext);
   const popular = items.slice(0, 10);
+
+  const handleAdd = (e, item) => {
+    e.preventDefault();
+    addToCart(item);
+  };
 
   return (
     <div className="max-w-[1400px] mx-auto px-10 py-10">
@@ -66,7 +71,10 @@ const PopularProduct = () => {
                   </span>
                 )}
               </div>
-              <button className="bg-[#29241F] text-white text-sm px-3 py-1 rounded">
+              <button 
+                onClick={(e) => handleAdd(e, item)}
+                className="bg-[#29241F] hover:bg-[#C2542E] transition-colors text-white text-sm px-3 py-1 rounded"
+              >
                 Add
               </button>
             </div>

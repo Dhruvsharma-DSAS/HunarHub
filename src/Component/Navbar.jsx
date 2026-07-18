@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import crossplane from "../../Image/crossplane.png";
 import SearchBar from "./SearchBar";
 import { CartContext } from "./CartContext";
+import { AuthContext } from "./AuthContext";
 
 const place = [
   "Delhi 110001",
@@ -49,6 +50,7 @@ const place = [
 
 const Navbar = () => {
   const { getTotalItems } = useContext(CartContext);
+  const { user, logout } = useContext(AuthContext);
   return (
     <div className="p-2.5 bg-white shadow-sm">
       <nav className="flex justify-around">
@@ -81,10 +83,22 @@ const Navbar = () => {
         <SearchBar />
 
         <div className="flex items-center gap-6 ml-auto mr-4">
-          <Link to="/signin" className="cursor-pointer">
-            <p className="text-[#8C8479] text-xs">Account</p>
-            <p className="font-bold">Sign in</p>
-          </Link>
+          {user ? (
+            <div className="flex items-center gap-2">
+              <Link to="/dashboard" className="w-[45px] h-[45px] rounded-full bg-[#C8643C] flex items-center justify-center text-white font-bold text-xl hover:bg-orange-800 transition-colors">
+                {user.name.charAt(0).toUpperCase()}
+              </Link>
+              <div className="flex flex-col">
+                <p className="text-[#8C8479] text-xs cursor-default">Account</p>
+                <button onClick={logout} className="font-bold text-sm text-left hover:text-[#C8643C]">Logout</button>
+              </div>
+            </div>
+          ) : (
+            <Link to="/signin" className="cursor-pointer">
+              <p className="text-[#8C8479] text-xs">Account</p>
+              <p className="font-bold">Sign in</p>
+            </Link>
+          )}
           <Link to="/order" className="cursor-pointer">
             <p className="text-[#8C8479] text-xs">Return</p>
             <p className="font-bold">& Order</p>

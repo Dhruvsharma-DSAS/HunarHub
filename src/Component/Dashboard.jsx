@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { requestList, listingList, orderList, earnBars, paymentList, navList, skillList } from "../Data/dashboardData";
+import { AuthContext } from "./AuthContext";
 
 const Dashboard = () => {
+  const { user } = useContext(AuthContext);
+  const userName = user?.name || "Karan";
+  const userInitial = userName.charAt(0).toUpperCase();
+
   const [section, setSection] = useState("overview");
   const [listings, setListings] = useState(listingList);
   const [showAddForm, setShowAddForm] = useState(false);
@@ -19,7 +24,7 @@ const Dashboard = () => {
         </h1>
         <span className="text-[#8C8479] font-bold text-sm">Maker studio</span>
         <div className="ml-auto bg-[#C8643C] text-white font-bold w-9 h-9 rounded-full flex items-center justify-center">
-          R
+          {userInitial}
         </div>
       </div>
 
@@ -42,7 +47,7 @@ const Dashboard = () => {
         {section === "overview" && (
           <div>
             <div className="bg-[#29241F] rounded-2xl p-8 mb-5">
-              <h1 className="text-white text-2xl font-bold">Namaste, Ramesh 👋</h1>
+              <h1 className="text-white text-2xl font-bold">Namaste, {userName} 👋</h1>
               <p className="text-[#C9BFAE] text-sm mt-2">
                 New requests are waiting on you — the sooner you respond, the better your response score looks.
               </p>
@@ -102,11 +107,11 @@ const Dashboard = () => {
             <div className="bg-white border border-[#EBE3D6] rounded-2xl p-6 mb-4">
               <div className="flex items-center gap-4">
                 <div className="w-16 h-16 rounded-full bg-[#C8643C] text-white flex items-center justify-center font-bold text-2xl">
-                  R
+                  {userInitial}
                 </div>
                 <div className="flex-1">
                   <p className="font-bold text-lg">
-                    Ramesh Kumhar{" "}
+                    {userName} {" "}
                     <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full">
                       ✓ Verified maker
                     </span>

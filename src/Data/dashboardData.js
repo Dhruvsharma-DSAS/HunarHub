@@ -52,7 +52,7 @@ export const skillList = ["Pottery", "Terracotta diyas", "Matkas", "Puja items",
 
 export const customerOrderList = [
   { id: "HH-8841", item: "Terracotta water pot (matka), 5L", maker: "Shyam Prajapati", date: "2 Jul 2026", amount: "₹240", status: "Pending", img: "https://loremflickr.com/300/300/clay,pot?lock=2" },
-  { id: "HH-8790", item: "Hand-thrown clay diyas, set of 12", maker: "Ramesh Kumhar", date: "27 Jun 2026", amount: "₹300", status: "Delivered", img: "https://loremflickr.com/300/300/diya,pottery?lock=11" },
+  { id: "HH-8790", item: "Hand-thrown clay diyas, set of 12", maker: "Karan", date: "27 Jun 2026", amount: "₹300", status: "Delivered", img: "https://loremflickr.com/300/300/diya,pottery?lock=11" },
   { id: "HH-8642", item: "Brass puja thali set", maker: "Soni Metalworks", date: "14 Jun 2026", amount: "₹890", status: "Delivered", img: "https://loremflickr.com/300/300/brass,puja?lock=6" },
   { id: "HH-8511", item: "Handloom cotton stole", maker: "Devi Weaves", date: "3 Jun 2026", amount: "₹310", status: "Delivered", img: "https://loremflickr.com/300/300/cotton,scarf?lock=8" },
   { id: "HH-8400", item: "Copper water bottle", maker: "Soni Metalworks", date: "25 May 2026", amount: "₹630", status: "Pending", img: "https://loremflickr.com/300/300/copper,bottle?lock=30" },

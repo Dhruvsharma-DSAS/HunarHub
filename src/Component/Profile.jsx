@@ -13,10 +13,10 @@ const gallery = [
 ];
 
 const baseReviews = [
-  { name: "Priya Sharma", date: "2 Jul 2026", stars: "★★★★★", text: "Beautiful diyas, exactly like the photos. Ramesh even packed extra padding so nothing broke in transit." },
+  { name: "Priya Sharma", date: "2 Jul 2026", stars: "★★★★★", text: "Beautiful diyas, exactly like the photos. Karan even packed extra padding so nothing broke in transit." },
   { name: "Vikram Singh", date: "27 Jun 2026", stars: "★★★★★", text: "Bought a matka for summer — keeps water genuinely cool. Quick handover too." },
   { name: "Anjali Mehta", date: "14 Jun 2026", stars: "★★★★☆", text: "Lovely craftsmanship on the puja thali, slightly smaller than I expected but still worth it." },
-  { name: "Rohit Gupta", date: "2 Jun 2026", stars: "★★★★★", text: "Second time ordering from Ramesh. Consistent quality every time." },
+  { name: "Rohit Gupta", date: "2 Jun 2026", stars: "★★★★★", text: "Second time ordering from Karan. Consistent quality every time." },
 ];
 
 const Profile = () => {
@@ -47,11 +47,11 @@ const Profile = () => {
 
         <div className="bg-white border border-[#EBE3D6] rounded-2xl p-6 flex items-center gap-6">
           <div className="w-20 h-20 rounded-full bg-[#C2542E] text-white flex items-center justify-center font-bold text-3xl">
-            R
+            K
           </div>
           <div className="flex-1">
             <p className="text-2xl font-bold">
-              Ramesh Kumhar{" "}
+              Karan {" "}
               <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full">
                 ✓ Verified maker
               </span>

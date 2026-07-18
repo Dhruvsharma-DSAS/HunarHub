@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from './AuthContext'
 
 const Lastone = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div className="w-full">
       <div className="grid grid-cols-2 md:grid-cols-4 bg-white border-t border-[#eee]">
@@ -92,33 +94,35 @@ const Lastone = () => {
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-[#A5A098] font-bold tracking-wider text-sm mb-5">
-              MAKERS
-            </h4>
-            <ul className="space-y-4">
-              <li>
-                <Link to="/sell" className="text-white hover:text-[#C8843C] no-underline">
-                  List your skills
-                </Link>
-              </li>
-              <li>
-                <Link to="/dashboard" className="text-white hover:text-[#C8843C] no-underline">
-                  Maker dashboard
-                </Link>
-              </li>
-              <li>
-                <Link to="/sell" className="text-white hover:text-[#C8843C] no-underline">
-                  Service requests
-                </Link>
-              </li>
-              <li>
-                <Link to="/sell" className="text-white hover:text-[#C8843C] no-underline">
-                  Earnings
-                </Link>
-              </li>
-            </ul>
-          </div>
+          {user && (
+            <div>
+              <h4 className="text-[#A5A098] font-bold tracking-wider text-sm mb-5">
+                MAKERS
+              </h4>
+              <ul className="space-y-4">
+                <li>
+                  <Link to="/sell" className="text-white hover:text-[#C8843C] no-underline">
+                    List your skills
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/dashboard" className="text-white hover:text-[#C8843C] no-underline">
+                    Maker dashboard
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/sell" className="text-white hover:text-[#C8843C] no-underline">
+                    Service requests
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/sell" className="text-white hover:text-[#C8843C] no-underline">
+                    Earnings
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          )}
 
           <div>
             <h4 className="text-[#A5A098] font-bold tracking-wider text-sm mb-5">

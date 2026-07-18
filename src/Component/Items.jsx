@@ -1,9 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import items from "../Data/items";
+import { CartContext } from "./CartContext";
 
 const Items = () => {
+  const { addToCart } = useContext(CartContext);
   const dealItems = items.filter((item) => item.Discount?.trim());
+
+  const handleAdd = (e, item) => {
+    e.preventDefault();
+    addToCart(item);
+  };
 
   return (
     <div className="max-w-[1350px] mt-30 mx-auto py-5 px-10 bg-[#ffffff] rounded-4xl">
@@ -62,7 +69,10 @@ const Items = () => {
                   </span>
                 )}
               </div>
-              <button className="bg-[#29241F] text-white text-sm px-3 py-1 rounded">
+              <button 
+                onClick={(e) => handleAdd(e, item)}
+                className="bg-[#29241F] hover:bg-[#C2542E] transition-colors text-white text-sm px-3 py-1 rounded"
+              >
                 Add
               </button>
             </div>

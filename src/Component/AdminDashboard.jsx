@@ -9,15 +9,15 @@ const pendingMakers = [
 ];
 
 const adminOrderList = [
-  { id: "HH-8841", item: "Terracotta water pot (matka), 5L", maker: "Ramesh Kumhar", customer: "Vikram Singh", date: "2 Jul 2026", amount: "₹240", status: "Awaiting handover" },
-  { id: "HH-8790", item: "Hand-thrown clay diyas, set of 12", maker: "Ramesh Kumhar", customer: "Rohit Gupta", date: "27 Jun 2026", amount: "₹300", status: "Delivered" },
+  { id: "HH-8841", item: "Terracotta water pot (matka), 5L", maker: "Karan", customer: "Vikram Singh", date: "2 Jul 2026", amount: "₹240", status: "Awaiting handover" },
+  { id: "HH-8790", item: "Hand-thrown clay diyas, set of 12", maker: "Karan", customer: "Rohit Gupta", date: "27 Jun 2026", amount: "₹300", status: "Delivered" },
   { id: "HH-8642", item: "Brass puja thali set", maker: "Soni Metalworks", customer: "Anjali Mehta", date: "14 Jun 2026", amount: "₹890", status: "Delivered" },
   { id: "HH-8511", item: "Custom-stitched kurta", maker: "Aslam Tailors", customer: "Sneha Rao", date: "3 Jun 2026", amount: "₹680", status: "Delivered" },
   { id: "SR-201", item: "Leather sandal repair", maker: "Mohan Mochi", customer: "Priya Sharma", date: "5 Jul 2026", amount: "₹140", status: "Awaiting" },
 ];
 
 const disputeData = [
-  { id: "d1", complaint: "Order not delivered within promised time", customer: "Priya Sharma", maker: "Ramesh Kumhar", date: "5 Jul 2026", status: "Open" },
+  { id: "d1", complaint: "Order not delivered within promised time", customer: "Priya Sharma", maker: "Karan", date: "5 Jul 2026", status: "Open" },
   { id: "d2", complaint: "Product quality not matching photos", customer: "Rohit Gupta", maker: "Devi Kumhar", date: "28 Jun 2026", status: "Open" },
   { id: "d3", complaint: "Overcharged for blouse stitching", customer: "Anjali Mehta", maker: "Geeta Boutique", date: "20 Jun 2026", status: "Resolved" },
   { id: "d4", complaint: "Wrong size delivered", customer: "Vikram Singh", maker: "Aslam Tailors", date: "15 Jun 2026", status: "Resolved" },

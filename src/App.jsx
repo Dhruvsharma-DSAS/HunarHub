@@ -1,5 +1,6 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import { AuthContext } from './Component/AuthContext'
 import Movingbar from './Component/Movingbar'
 import Navbar from './Component/Navbar'
 import Category from './Component/Category'
@@ -62,11 +63,16 @@ const MainLayout = () => (
   </div>
 )
 
+const ProtectedRoute = ({ children }) => {
+  const { user } = useContext(AuthContext);
+  return user ? children : <Navigate to="/signin" replace />;
+}
+
 const App = () => {
   return (
     <Routes>
       <Route path="/sell" element={<SellingProd />} />
-      <Route path="/dashboard" element={<Dashboard />} />
+      <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
       <Route path="/admin" element={<AdminDashboard />} />
       <Route path="/*" element={<MainLayout />} />
       <Route path='/forgetpassword' element={<ForgetPassword/>}/>

@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from './AuthContext'
 
 const Sell = () => {
+  const { user } = useContext(AuthContext);
+
+  if (!user) return null;
+
   return (
     <div className="max-w-[1400px] mx-auto px-10 py-6">
       <div className="bg-[#29241F] rounded-3xl px-12 py-10 flex items-center justify-between gap-8">

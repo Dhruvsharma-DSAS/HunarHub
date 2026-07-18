@@ -30,7 +30,7 @@ const Request = () => {
         <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center text-2xl mx-auto">
           ✓
         </div>
-        <h1 className="text-2xl font-bold mt-5">Request sent to Ramesh Kumhar</h1>
+        <h1 className="text-2xl font-bold mt-5">Request sent to Karan</h1>
         <p className="text-[#5B5346] text-sm mt-2">
           They'll confirm within ~1.2 hrs. You'll get a notification the moment they respond.
         </p>
@@ -49,16 +49,16 @@ const Request = () => {
       <div>
         <h1 className="text-3xl font-bold">Request a service</h1>
         <p className="text-[#8C8479] text-sm mt-1">
-          Tell Ramesh Kumhar what you need — they'll confirm price and timing before anything is charged.
+          Tell Karan what you need — they'll confirm price and timing before anything is charged.
         </p>
 
 
         <div className="bg-white border border-[#EBE3D6] rounded-xl p-4 flex items-center gap-3 mt-5">
           <div className="w-11 h-11 rounded-full bg-[#C2542E] text-white flex items-center justify-center font-bold">
-            R
+            K
           </div>
           <div className="flex-1">
-            <p className="font-bold text-sm">Ramesh Kumhar</p>
+            <p className="font-bold text-sm">Karan</p>
             <p className="text-xs text-[#8C8479]">Potter · Sanganer, Jaipur</p>
           </div>
           <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full">
@@ -136,7 +136,7 @@ const Request = () => {
 
 
         <div className="bg-[#FBEAE1] border border-[#F3D2BE] rounded-xl p-4 mt-4 text-sm text-[#7A4C36]">
-          💰 No charge yet — Ramesh Kumhar reviews your request and confirms the final price before you pay.
+          💰 No charge yet — Karan reviews your request and confirms the final price before you pay.
           Payment happens directly on handover, ₹0 platform fee.
         </div>
 

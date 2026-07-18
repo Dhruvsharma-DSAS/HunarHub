@@ -1,9 +1,24 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "./AuthContext";
 
 const SignInSignUp = () => {
   const [isSignIn, setIsSignIn] = useState(true);
   const [show,setShow]=useState("password")
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPreSign, setShowPreSign] = useState(false);
+  
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    if (login(email, password)) {
+      navigate("/");
+    } else {
+      alert("Invalid credentials. Please use karan123@gmail.com and karan123");
+    }
+  };
 
   function handleshow(){
     if (show.trim()=="password"){
@@ -118,9 +133,11 @@ const SignInSignUp = () => {
             </div>
             <div className="flex items-center mt-2 rounded-xl border border-stone-300 bg-white focus-within:border-orange-700">
               <input
-                type="tel"
+                type="text"
                 placeholder="example@gmail.com"
                 className="w-full p-4 rounded-xl outline-none"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
           </div>
@@ -140,6 +157,8 @@ const SignInSignUp = () => {
                 type={show}
                 placeholder="Enter your password"
                 className="w-full p-4 rounded-xl outline-none"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
               />
               <button className="pr-4 font-semibold text-stone-800" onClick={()=>handleshow()}>
                 Show
@@ -154,9 +173,35 @@ const SignInSignUp = () => {
           </div>
 
 
-          <button className="w-full bg-orange-700 hover:bg-orange-800 text-white font-semibold text-lg py-4 rounded-xl mt-6">
+          <button onClick={isSignIn ? handleLogin : undefined} className="w-full bg-orange-700 hover:bg-orange-800 text-white font-semibold text-lg py-4 rounded-xl mt-6">
             {isSignIn ? "Sign in" : "Create account"}
           </button>
+
+          {isSignIn && (
+            <div className="flex flex-col items-center mt-4">
+              <button 
+                onClick={() => setShowPreSign(!showPreSign)}
+                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold py-3 rounded-xl mb-2 uppercase tracking-wide"
+              >
+                PRE SIGN DETAIL
+              </button>
+              {showPreSign && (
+                <div className="bg-orange-100 text-orange-800 p-3 rounded-xl border border-orange-200 text-sm py-4 text-center w-full mt-2 transition-all">
+                  <p>Use this id: <b>karan123@gmail.com</b></p>
+                  <p className="mt-1">and password: <b>karan123</b></p>
+                  <button 
+                    onClick={() => {
+                        setEmail("karan123@gmail.com");
+                        setPassword("karan123");
+                    }}
+                    className="mt-3 bg-orange-700 hover:bg-orange-800 text-white px-4 py-2 rounded-lg text-xs font-bold w-full"
+                  >
+                     Auto-fill
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
 
 
           <div className="flex items-center gap-4 mt-6">
@@ -183,6 +228,7 @@ const SignInSignUp = () => {
               {isSignIn ? "Create an account" : "Sign in"}
             </button>
           </p>
+
         </div>
       </div>
     </div>

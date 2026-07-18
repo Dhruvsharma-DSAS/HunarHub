@@ -51,7 +51,7 @@ const SellingProd = () => {
             type="text"
             value={makerName}
             onChange={(e) => setMakerName(e.target.value)}
-            placeholder="e.g. Ramesh Kumhar"
+            placeholder="e.g. Karan"
             className="w-full bg-white rounded-xl px-5 py-4 mb-6"
           />
 
@@ -168,7 +168,7 @@ const SellingProd = () => {
             </div>
             <div>
               <p className="font-bold text-[#29241F]">
-                Ramesh Kumhar earned ₹18,400 last month
+                Karan earned ₹18,400 last month
               </p>
               <p className="text-[#8C8479] text-sm">Potter · Sanganer</p>
             </div>
@@ -277,9 +277,9 @@ const SellingProd = () => {
               "Third generation on the wheel. hunarhub brought my diyas to homes I could never reach before."
             </p>
             <div className="flex items-center gap-3">
-              <div className="bg-[#C8643C] text-white font-bold w-12 h-12 rounded-full flex items-center justify-center">R</div>
+              <div className="bg-[#C8643C] text-white font-bold w-12 h-12 rounded-full flex items-center justify-center">K</div>
               <div>
-                <p className="font-bold">Ramesh Kumhar</p>
+                <p className="font-bold">Karan</p>
                 <p className="text-[#8C8479] text-sm">Potter · Sanganer</p>
               </div>
             </div>
