@@ -6,12 +6,19 @@ import { AuthContext } from './AuthContext'
 
 const Productdetail = () => {
   const { id } = useParams();
-  const { addToCart } = useContext(CartContext);
+  const { cartItems, addToCart, increaseQty, decreaseQty } = useContext(CartContext);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const [qty, setQty] = useState(1);
-  const [added, setAdded] = useState(false);
+
   const product = items.find((item) => item.Id === id);
+
+  let qtyInCart = 0;
+  if (cartItems && product) {
+    const cartItem = cartItems.find((item) => item.Id === product.Id);
+    if (cartItem) {
+      qtyInCart = cartItem.quantity;
+    }
+  }
 
   if (!product) {
     return <h2 className="text-center py-20">Product not found</h2>;
@@ -108,28 +115,26 @@ const Productdetail = () => {
 
 
           <div className="flex gap-4 mb-4">
-            <div className="flex items-center border border-[#ddd] bg-white rounded-xl">
-              <button onClick={() => setQty(qty > 1 ? qty - 1 : 1)} className="px-5 py-3 text-xl">−</button>
-              <span className="px-4 font-bold">{qty}</span>
-              <button onClick={() => setQty(qty + 1)} className="px-5 py-3 text-xl">+</button>
-            </div>
-            <button
-              onClick={() => {
-                if (!user) {
-                  navigate("/signin");
-                  return;
-                }
-                for (let i = 0; i < qty; i++) {
+            {qtyInCart > 0 ? (
+              <div className="flex-1 flex items-center justify-between border-2 border-[#C8643C] bg-[#F0E4D8] rounded-xl overflow-hidden">
+                <button onClick={() => decreaseQty(product.Id)} className="w-1/3 py-3 text-2xl font-bold text-[#C8643C] hover:bg-[#EED5BE] transition-colors">−</button>
+                <span className="font-bold text-xl text-[#C8643C]">{qtyInCart}</span>
+                <button onClick={() => increaseQty(product.Id)} className="w-1/3 py-3 text-2xl font-bold text-[#C8643C] hover:bg-[#EED5BE] transition-colors">+</button>
+              </div>
+            ) : (
+              <button
+                onClick={() => {
+                  if (!user) {
+                    navigate("/signin");
+                    return;
+                  }
                   addToCart(product);
-                }
-                setAdded(true);
-                setTimeout(() => setAdded(false), 2000);
-              }}
-              className={`flex-1 font-bold rounded-xl transition-colors ${added ? "bg-green-600 text-white" : "bg-[#C8643C] text-white hover:bg-[#b3552f]"
-                }`}
-            >
-              {added ? "✓ Added!" : "Add to cart"}
-            </button>
+                }}
+                className="flex-1 font-bold rounded-xl transition-colors bg-[#C8643C] text-white hover:bg-[#b3552f] py-4"
+              >
+                Add to cart
+              </button>
+            )}
           </div>
 
           <Link to={user ? "/cart" : "/signin"}>

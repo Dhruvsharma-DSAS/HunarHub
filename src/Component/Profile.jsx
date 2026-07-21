@@ -1,29 +1,61 @@
 import React, { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-
-const skills = ["Pottery", "Terracotta diyas", "Matkas", "Puja items", "Custom sculpture"];
-
-const gallery = [
-  { img: "https://loremflickr.com/400/400/diya,pottery?lock=11", price: "₹150" },
-  { img: "https://loremflickr.com/400/400/clay,pot?lock=2", price: "₹240" },
-  { img: "https://loremflickr.com/400/400/planter,clay?lock=23", price: "₹280" },
-  { img: "https://loremflickr.com/400/400/sculpture,clay?lock=24", price: "From ₹600" },
-  { img: "https://loremflickr.com/400/400/wallart,clay?lock=25", price: "₹340" },
-  { img: "https://loremflickr.com/400/400/brass,puja?lock=6", price: "₹890" },
-];
-
-const baseReviews = [
-  { name: "Priya Sharma", date: "2 Jul 2026", stars: "★★★★★", text: "Beautiful diyas, exactly like the photos. Karan even packed extra padding so nothing broke in transit." },
-  { name: "Vikram Singh", date: "27 Jun 2026", stars: "★★★★★", text: "Bought a matka for summer — keeps water genuinely cool. Quick handover too." },
-  { name: "Anjali Mehta", date: "14 Jun 2026", stars: "★★★★☆", text: "Lovely craftsmanship on the puja thali, slightly smaller than I expected but still worth it." },
-  { name: "Rohit Gupta", date: "2 Jun 2026", stars: "★★★★★", text: "Second time ordering from Karan. Consistent quality every time." },
-];
+import items from '../Data/items'
 
 const Profile = () => {
   const { id } = useParams();
   const [showForm, setShowForm] = useState(false);
   const [myRating, setMyRating] = useState(0);
   const [reviewText, setReviewText] = useState("");
+
+
+  const product = items.find((item) => item.Id === id);
+
+  if (!product) {
+    return <h2 className="text-center py-20">Maker not found</h2>;
+  }
+
+
+  const makerName = product.Maker;
+  const makerInitial = makerName.charAt(0).toUpperCase();
+  const makerCategory = product.category;
+  const makerDistance = product.Distance;
+
+  const makerProducts = items.filter((item) => item.Maker === makerName);
+
+  
+  const skillSet = [];
+  for (let i = 0; i < makerProducts.length; i++) {
+    if (skillSet.indexOf(makerProducts[i].subCategory) === -1) {
+      skillSet.push(makerProducts[i].subCategory);
+    }
+  }
+
+  let totalRating = 0;
+  let totalReviews = 0;
+  for (let i = 0; i < makerProducts.length; i++) {
+    totalRating = totalRating + makerProducts[i].Rating;
+    totalReviews = totalReviews + makerProducts[i].TotalNoRating;
+  }
+  const avgRating = (totalRating / makerProducts.length).toFixed(1);
+
+  const gallery = [];
+  for (let i = 0; i < makerProducts.length; i++) {
+    gallery.push({
+      id: makerProducts[i].Id,
+      img: makerProducts[i].imglink,
+      price: "₹" + makerProducts[i].price,
+      name: makerProducts[i].Product,
+    });
+  }
+
+  const baseReviews = [
+    { name: "Priya Sharma", date: "2 Jul 2026", stars: "★★★★★", text: "Beautiful work, exactly like the photos. " + makerName + " even packed extra padding so nothing broke in transit." },
+    { name: "Vikram Singh", date: "27 Jun 2026", stars: "★★★★★", text: "Great quality product. Quick handover too." },
+    { name: "Anjali Mehta", date: "14 Jun 2026", stars: "★★★★☆", text: "Lovely craftsmanship, slightly smaller than I expected but still worth it." },
+    { name: "Rohit Gupta", date: "2 Jun 2026", stars: "★★★★★", text: "Second time ordering from " + makerName + ". Consistent quality every time." },
+  ];
+
   const [reviews, setReviews] = useState(baseReviews);
 
   const submitReview = () => {
@@ -47,21 +79,21 @@ const Profile = () => {
 
         <div className="bg-white border border-[#EBE3D6] rounded-2xl p-6 flex items-center gap-6">
           <div className="w-20 h-20 rounded-full bg-[#C2542E] text-white flex items-center justify-center font-bold text-3xl">
-            K
+            {makerInitial}
           </div>
           <div className="flex-1">
             <p className="text-2xl font-bold">
-              Karan {" "}
+              {makerName}{" "}
               <span className="bg-emerald-50 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full">
                 ✓ Verified maker
               </span>
             </p>
             <p className="text-sm text-[#8C8479] mt-1">
-              Potter (Kumhar) · Sanganer, Jaipur · 14 yrs experience
+              {makerCategory} · {makerDistance} away
             </p>
             <p className="text-sm mt-2">
-              <span className="text-[#E0A21A]">★</span> <b>4.9</b>{" "}
-              <span className="text-[#8C8479]">(312 ratings) · 98% response rate</span>
+              <span className="text-[#E0A21A]">★</span> <b>{avgRating}</b>{" "}
+              <span className="text-[#8C8479]">({totalReviews} ratings) · 98% response rate</span>
             </p>
           </div>
           <button className="bg-[#C2542E] text-white font-bold px-6 py-3 rounded-xl">
@@ -78,12 +110,12 @@ const Profile = () => {
             <div className="bg-white border border-[#EBE3D6] rounded-2xl p-6">
               <h2 className="font-bold text-lg mb-2">About</h2>
               <p className="text-sm text-[#3A352C] leading-relaxed">
-                Third-generation potter working the wheel in Sanganer. I make hand-thrown
-                terracotta diyas, matkas and puja items using clay sourced locally and fired
-                the traditional way — each piece carries the small imperfections that make it handmade.
+                {makerName} is a verified {makerCategory.toLowerCase()} on HunarHub, located {makerDistance} from you.
+                With {makerProducts.length} products listed and {totalReviews} customer ratings,
+                they are one of the trusted makers in your area — every product is handmade with care.
               </p>
               <div className="flex flex-wrap gap-2 mt-4">
-                {skills.map((sk) => (
+                {skillSet.map((sk) => (
                   <span key={sk} className="bg-[#FBEAE1] text-[#A8431F] text-xs font-bold px-3 py-1 rounded-full">
                     {sk}
                   </span>
@@ -96,12 +128,12 @@ const Profile = () => {
               <h2 className="font-bold text-lg mb-4">Product gallery</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                 {gallery.map((g, index) => (
-                  <div key={index} className="relative rounded-xl overflow-hidden">
-                    <img src={g.img} alt="" className="w-full h-40 object-cover" />
+                  <Link to={`/product/${g.id}`} key={index} className="relative rounded-xl overflow-hidden group">
+                    <img src={g.img} alt={g.name} className="w-full h-40 object-cover group-hover:scale-105 transition-transform" />
                     <span className="absolute bottom-2 left-2 bg-white/95 text-xs font-bold px-2 py-1 rounded">
                       {g.price}
                     </span>
-                  </div>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -150,9 +182,9 @@ const Profile = () => {
 
               <div className="flex items-center gap-4 mb-4">
                 <div className="text-center">
-                  <p className="text-4xl font-bold">4.9</p>
+                  <p className="text-4xl font-bold">{avgRating}</p>
                   <p className="text-[#E0A21A]">★★★★★</p>
-                  <p className="text-xs text-[#8C8479]">{reviews.length + 308} ratings</p>
+                  <p className="text-xs text-[#8C8479]">{totalReviews} ratings</p>
                 </div>
               </div>
 
@@ -178,8 +210,9 @@ const Profile = () => {
           <div className="flex flex-col gap-4">
             <div className="bg-white border border-[#EBE3D6] rounded-2xl p-5">
               <h3 className="font-bold mb-3">Details</h3>
-              <p className="text-sm mb-2">📍 Sanganer, Jaipur · 3.2 km away</p>
+              <p className="text-sm mb-2">📍 {makerDistance} away</p>
               <p className="text-sm mb-2">🗓️ Usually available Mon–Sat</p>
+              <p className="text-sm mb-2">🛍️ {makerProducts.length} products listed</p>
               <p className="text-sm">💰 ₹0 platform fee · pay maker directly</p>
             </div>
 
